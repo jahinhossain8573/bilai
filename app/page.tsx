@@ -5,6 +5,7 @@ export default function App() {
   return (
     <div className="">
       <header className="p-5 flex justify-center gap-3 items-center">
+        {/* Navbar */}
         <div>
           {/* ADD IN LOGO AND THE "BILAI" TEXT HERE */}
           <h1>BILAI</h1>
@@ -14,12 +15,14 @@ export default function App() {
           className="bg-gray-200 rounded-2xl p-1"
           placeholder="Search"
         />
+        {/* Search */}
         <Link href="">Home</Link>
         <button className=" hover:cursor-pointer">Add a Cat</button>
         <div>
           {/* Add in the Profile image here */}
           <span>Profile</span>
         </div>
+        {/* Search */}
       </header>
       <div className="p-3">
         <h1 className="font-extrabold text-3xl">Cats looking for a home</h1>

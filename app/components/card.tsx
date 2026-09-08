@@ -15,7 +15,7 @@ export default function Card() {
       <div className="p-2">
         {/* Text inside the card */}
         <h2 className="">Milo</h2> {/* Line 1 — Cat Name */}
-        <ul className="flex gap-3">
+        <ul className="flex gap-1.5">
           {" "}
           {/* Line 2 — Breed, Age, Gender */}
           <li>
@@ -33,9 +33,13 @@ export default function Card() {
         </ul>
         <div>
           {" "}
-          {/* Line 3 — Location */}
-          <span>📍</span>
-          <span>Dhanmondi, Dhaka</span>
+          {/* Line 3 — Location + WhatsApp */}
+          <div className="flex justify-between">
+            <span>📍 Dhanmondi, Dhaka</span>
+            <button className="bg-gray-200 rounded-2xl px-2">
+              Text on WhatsApp
+            </button>
+          </div>
         </div>
       </div>
     </div>

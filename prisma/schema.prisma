@@ -11,3 +11,19 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Cat {
+  id        Int      @id @default(autoincrement())
+  name      String
+  breed     String
+  ageMonths Int
+  gender    Gender
+  location  String
+
+  createdAt DateTime @default(now())
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}

@@ -8,7 +8,7 @@ export default function App() {
         {/* Navbar */}
         <div>
           {/* ADD IN LOGO AND THE "BILAI" TEXT HERE */}
-          <h1>BILAI</h1>
+          <h1 className="text-1xl font-'matcha mint' font-extrabold text-[#212922]">BILAI. </h1>
         </div>
         <input
           type="text"
@@ -27,7 +27,7 @@ export default function App() {
         {/* Search */}
       </header>
       <div className="p-3">
-        <h1 className="font-extrabold text-3xl">Cats looking for a home</h1>
+        <h1 className="font-poppins font-extrabold text-3xl text-[#212922]">Cats looking for a home</h1>
         <div className="flex flex-wrap gap-4 justify-center">
           <Card />
           <Card />

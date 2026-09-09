@@ -19,6 +19,8 @@ model Cat {
   ageMonths Int
   gender    Gender
   location  String
+  about     String?
+  imageUrl  String?
 
   createdAt DateTime @default(now())
 }

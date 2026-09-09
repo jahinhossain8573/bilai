@@ -15,7 +15,8 @@ export default function Card() {
 
       <div className="p-2">
         {/* Text inside the card */}
-        <h2 className="text-lg font-bold text-[#212922]">Milo</h2> {/* Line 1 — Cat Name */}
+        <h2 className="text-lg font-bold text-[#212922]">Milo</h2>{" "}
+        {/* Line 1 — Cat Name */}
         <ul className="flex gap-1.5">
           {" "}
           {/* Line 2 — Breed, Age, Gender */}

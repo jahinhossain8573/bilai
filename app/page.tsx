@@ -17,7 +17,9 @@ export default function App() {
         />
         {/* Search */}
         <Link href="">Home</Link>
-        <button className=" hover:cursor-pointer">Add a Cat</button>
+        <Link href="/add_cat" className=" hover:cursor-pointer">
+          Add a Cat
+        </Link>
         <div>
           {/* Add in the Profile image here */}
           <span>Profile</span>

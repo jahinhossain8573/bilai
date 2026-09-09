@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import catPhoto from "../resources/sample_cat_photo.jpeg";
 export default function Card() {
   return (

@@ -3,7 +3,7 @@ import Image from "next/image";
 import catPhoto from "../resources/sample_cat_photo.jpeg";
 export default function Card() {
   return (
-    <div className="border w-fit rounded-2xl">
+    <div className="border w-fit rounded-2xl bg-[#f0eec9] shadow-md">
       <Image
         src={catPhoto}
         width={300}
@@ -20,16 +20,16 @@ export default function Card() {
           {" "}
           {/* Line 2 — Breed, Age, Gender */}
           <li>
-            <span>•</span>
-            <span>Deshi</span>
+            <span></span>
+            <span className="bg-[#a1cf6b] rounded-xl px-2 py-0.5">Deshi</span>
           </li>
           <li>
             <span>•</span>
-            <span>6 months</span>
+            <span> 6 months</span>
           </li>
           <li>
             <span>•</span>
-            <span>Female</span>
+            <span> Female</span>
           </li>
         </ul>
         <div>
@@ -37,7 +37,7 @@ export default function Card() {
           {/* Line 3 — Location + WhatsApp */}
           <div className="flex justify-between">
             <span>📍 Dhanmondi, Dhaka</span>
-            <button className="bg-gray-200 rounded-2xl px-2">
+            <button className="bg-[#FA7D1F] rounded-xl px-5 py-1 text-[#f0eec9] font-poppins font-bold hover:bg-[#FA7D1F]/80">
               Text on WhatsApp
             </button>
           </div>

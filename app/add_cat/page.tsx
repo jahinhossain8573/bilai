@@ -15,7 +15,7 @@ export default function Page() {
           <h2 className="text-2xl font-bold">Cat for Adoption</h2>
           <span>Help adopters find the cat</span>
         </div>
-        <Link href="">Back to Cats</Link>
+        <Link href="/">Back to Cats</Link>
       </header>
       <div className="flex justify-center">
         <div className="flex flex-col gap-2">
@@ -54,8 +54,8 @@ export default function Page() {
               <span>Female</span>
             </div>
           </div>
-          <div>
-            <span>Photo</span>
+          <div className="flex flex-col">
+            <span className={spanStyling}>Photo</span>
             <input
               type="file"
               name=""

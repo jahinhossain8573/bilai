@@ -1,8 +1,33 @@
-import Link from "next/link";
+"use client";
 
-const spanStyling: string = "font-bold ";
-const inputGroupStyling: string = "flex flex-col w-3/4";
+import Link from "next/link";
+import Image from "next/image";
+import { use, useState } from "react";
+
+const spanStyling: string = "font-bold "; // Controls styling for the input titles
+const inputGroupStyling: string = "flex flex-col w-3/4"; // Controls styling for the stuff on the left
+
 export default function Page() {
+  // States for all of the fields
+  //States for text-based fiels
+  const [name, changeName] = useState("");
+  const [breed, changeBreed] = useState("");
+  const [location, changeLocation] = useState("");
+  const [aboutCat, changeAboutCat] = useState("");
+
+  // States for age
+  const [month, changeMonth] = useState<number>(0);
+  const [year, changeYear] = useState<number>(0);
+
+  // State for gender
+  const [gender, changeGender] = useState<"male" | "female" | null>("male");
+
+  // States for photo
+  const [image, changeImage] = useState<File | null>(null);
+  const [imagePreview, changeImagePreview] = useState<string | null>(null);
+
+  function saveProfile() {}
+
   return (
     <div>
       <header className="p-5 flex justify-center gap-x-48 items-center">
@@ -15,28 +40,71 @@ export default function Page() {
           <h2 className="text-2xl font-bold">Cat for Adoption</h2>
           <span>Help adopters find the cat</span>
         </div>
-        <Link href="/">Back to Cats</Link>
+        <Link href="/">BACK</Link>
       </header>
       <div className="flex justify-center">
         <div className="flex flex-col gap-2">
           {/* Container for the stuff on the left */}
           <div className={inputGroupStyling}>
             <span className={spanStyling}>Name</span>
-            <input type="text" className="border rounded-2xl" />
+            <input
+              type="text"
+              className="border rounded-2xl"
+              onChange={(e) => {
+                changeName(e.target.value);
+                // console.log(name);
+              }}
+            />
           </div>
           <div className={inputGroupStyling}>
             <span className={spanStyling}>Breed</span>
-            <input type="text" className="border rounded-2xl" />
+            <input
+              type="text"
+              className="border rounded-2xl"
+              onChange={(e) => {
+                changeBreed(e.target.value);
+                // console.log(breed);
+              }}
+            />
           </div>
           <div className={inputGroupStyling}>
             <span className={spanStyling}>Age</span>
-            <input type="text" className="border rounded-2xl" />
+            <div className="flex">
+              <input
+                onChange={(e) => {
+                  changeYear(Number(e.target.value));
+                  // console.log(aboutCat);
+                }}
+                type="text"
+                placeholder="YY"
+                className="border rounded-2xl w-10"
+              />
+              <input
+                onChange={(e) => {
+                  changeMonth(Number(e.target.value));
+                  // console.log(aboutCat);
+                }}
+                type="text"
+                placeholder="MM"
+                className="border rounded-2xl w-10"
+              />
+            </div>
           </div>
           <div className={inputGroupStyling}>
             <span className={spanStyling}>Location</span>
-            <input type="text" className="border rounded-2xl" />
+            <input
+              type="text"
+              className="border rounded-2xl"
+              onChange={(e) => {
+                changeLocation(e.target.value);
+                // console.log(location);
+              }}
+            />
           </div>
-          <button className="bg-green-400 p-2 rounded-2xl">
+          <button
+            onClick={saveProfile}
+            className="bg-green-400 p-2 rounded-2xl"
+          >
             Save Cat Profile
           </button>
           <span className="text-zinc-500">
@@ -48,24 +116,62 @@ export default function Page() {
           <div>
             <span className={spanStyling}>Gender</span>
             <div>
-              <input type="radio" />
+              <input
+                name="gender"
+                type="radio"
+                onChange={() => {
+                  changeGender("male");
+                  // console.log(gender);
+                }}
+              />
               <span>Male</span>
-              <input type="radio" />
+              <input
+                name="gender"
+                type="radio"
+                onChange={() => {
+                  changeGender("female");
+                  // console.log(gender);
+                }}
+              />
               <span>Female</span>
             </div>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col border rounded-2xl p-3">
             <span className={spanStyling}>Photo</span>
             <input
               type="file"
               name=""
               id=""
-              className="border p-5 rounded-2xl"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (!file) {
+                  return;
+                }
+                changeImage(file);
+                changeImagePreview(URL.createObjectURL(file));
+              }}
+              className=""
             />
+            {imagePreview && (
+              <Image
+                src={String(imagePreview)}
+                alt=""
+                width={500}
+                height={500}
+              ></Image>
+            )}
           </div>
           <div className="flex flex-col">
             <span className={spanStyling}>About your cat</span>
-            <input type="text" className="border rounded-2xl p-5" />
+            <input
+              onChange={(e) => {
+                changeAboutCat(e.target.value);
+                // console.log(aboutCat);
+              }}
+              type="text"
+              value={aboutCat}
+              className="border rounded-2xl"
+            />
           </div>
         </div>
       </div>

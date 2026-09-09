@@ -5,13 +5,13 @@ import Card from "./components/card";
 
 export default  function App() {
   return (
-    <div className="bg-[#FEFFEE] ">
+    <div className="bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center w-full h-full min-h-screen">
       <header className=" bg-[#f0eec9] p-1.5  flex justify-center gap-4 my-1.5 mx-1 items-center rounded-xl">
         {/* Navbar */}
-        <div className="bg-[#a1cf6b] rounded-xl p-1 flex gap-2 items-center">
+        <div className="bg-[#a1cf6b] rounded-xl p-1 md:flex md:grid-cols-1 md:items-center">
           <img src="/Bilai.png" width={32} height={32}/>
           {/* ADD IN LOGO AND THE "BILAI" TEXT HERE */}
-          <h1 className="text-1xl font-matcha_mint font-extrabold text-[#212922]">bilai.</h1>
+          <h1 className="lg:text-1xl font-matcha-mint font-normal text-[#212922]">bilai.</h1>
         </div>
         <input
           type="text"
@@ -32,7 +32,7 @@ export default  function App() {
         {/* Search */}
       </header>
       <div className="my-2 mx-4">
-        <h1 className="font-poppins font-bold text-2xl text-[#212922] my-2">Cats looking for a home</h1>
+        <h1 className="font-poppins font-bold lg:text-2xl text-[#212922] my-2">Cats looking for a home</h1>
         <div className="flex flex-wrap gap-4 justify-center">
           <Card />
           <Card />

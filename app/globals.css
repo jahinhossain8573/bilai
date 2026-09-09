@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+@theme inline {
+  --font-matcha-mint: var(--font-matcha-mint);
+}

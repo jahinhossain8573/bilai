@@ -2,7 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 
-type CreateCatInput = {
+export type CreateCatInput = {
   name: string;
   breed: string;
   ageMonths: number;

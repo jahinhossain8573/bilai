@@ -1,7 +1,14 @@
 import Link from "next/link";
 import Card from "./components/card";
+import { CreateCatInput } from "@/app/add_cat/page";
+import { prisma } from "@/lib/prisma";
 
-export default function App() {
+export default async function App() {
+  async function getData() {
+    const data: CreateCatInput[] = await prisma.cat.findMany();
+    return data;
+  }
+  const catData = await getData();
   return (
     <div className="bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center w-full h-full min-h-screen">
       <header className=" bg-[#f0eec9] p-1.5  flex justify-center gap-4 my-1.5 mx-1 items-center rounded-xl">
@@ -46,16 +53,7 @@ export default function App() {
         <h1 className="font-poppins font-bold lg:text-2xl text-[#212922] my-2">
           Cats looking for a home
         </h1>
-        <div className="flex flex-wrap gap-4 justify-center">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </div>
+        <div className="flex flex-wrap gap-4 justify-center"></div>
       </div>
     </div>
   );

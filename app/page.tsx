@@ -34,9 +34,9 @@ export default async function App() {
         </Link>
         <Link
           href="/add_cat"
-          className="text-[#212922] font-poppins font-extrabold hover:text-[##080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
+          className="flex justify-center items-center bg-[#a1cf6b] text-[#212922] font-poppins font-extrabold hover:text-[#d7ffdd] transition-colors duration-200 hover:bg-[#80b148] rounded-2xl p-1.5"
         >
-          Add a Cat
+          +Cat for adoption
         </Link>
         <div>
           {/* Add in the Profile image here */}

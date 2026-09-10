@@ -2,12 +2,16 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import placeholderCatPhoto from "../resources/sample_cat_photo.jpeg";
+import { addCatToDB } from "@/app/actions/cats";
 import { use, useState } from "react";
 
 const spanStyling: string = "font-bold "; // Controls styling for the input titles
 const inputGroupStyling: string = "flex flex-col w-3/4"; // Controls styling for the stuff on the left
 
 export default function Page() {
+  const router = useRouter();
   // States for all of the fields
   //States for text-based fiels
   const [name, changeName] = useState("");
@@ -26,7 +30,19 @@ export default function Page() {
   const [image, changeImage] = useState<File | null>(null);
   const [imagePreview, changeImagePreview] = useState<string | null>(null);
 
-  function saveProfile() {}
+  async function saveProfile() {
+    await addCatToDB({
+      name,
+      breed,
+      ageMonths: year * 12 + month,
+      gender: gender.toUpperCase() as "MALE" | "FEMALE",
+      location,
+      about: aboutCat,
+      imageUrl: placeholderCatPhoto.src, // swap for a real URL once upload is wired up
+    });
+
+    router.push("/");
+  }
 
   return (
     <div>
@@ -103,7 +119,7 @@ export default function Page() {
           </div>
           <button
             onClick={saveProfile}
-            className="bg-green-400 p-2 rounded-2xl"
+            className="bg-green-400 p-2 rounded-2xl hover:cursor-pointer hover:bg-green-500"
           >
             Save Cat Profile
           </button>

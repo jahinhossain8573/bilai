@@ -9,15 +9,15 @@ export default function Card() {
         width={300}
         height={200}
         alt=""
-        className="rounded-tl-2xl object-cover w-full p-2 aspect-video"
+        className="rounded-t-2xl object-cover w-full p-2 aspect-video"
       />
       {/* Cat Image */}
 
-      <div className="p-2">
+      <div className="px-2">
         {/* Text inside the card */}
-        <h2 className="text-lg font-bold text-[#212922]">Milo</h2>{" "}
+        <h2 className=" text-lg font-bold text-[#212922]">Milo</h2>{" "}
         {/* Line 1 — Cat Name */}
-        <ul className="flex gap-1.5">
+        <ul className="flex gap-1.5 ">
           {" "}
           {/* Line 2 — Breed, Age, Gender */}
           <li>
@@ -36,9 +36,9 @@ export default function Card() {
         <div>
           {" "}
           {/* Line 3 — Location + WhatsApp */}
-          <div className="flex justify-between">
+          <div className="flex justify-between py-1">
             <span>📍 Dhanmondi, Dhaka</span>
-            <button className="bg-[#FA7D1F] rounded-xl px-5 py-1 text-[#f0eec9] font-poppins font-bold hover:bg-[#FA7D1F]/80">
+            <button className="bg-[#FA7D1F] rounded-xl px-1 py-1 text-[#f0eec9] font-poppins font-bold hover:bg-[#FA7D1F]/80">
               Text on WhatsApp
             </button>
           </div>
@@ -47,4 +47,3 @@ export default function Card() {
     </div>
   );
 }
-

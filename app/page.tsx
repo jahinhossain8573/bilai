@@ -13,28 +13,28 @@ export default async function App() {
     <div className="bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center w-full h-full min-h-screen">
       <header className=" bg-[#f0eec9] p-1.5  flex justify-center gap-4 my-1.5 mx-1 items-center rounded-xl">
         {/* Navbar */}
-        <div className="bg-[#a1cf6b] rounded-xl p-1 md:flex md:grid-cols-1 md:items-center">
+        <div className="bg-[#f0eec9] rounded-xl p-1 md:flex md:grid-cols-1 md:items-center">
           <img src="/Bilai.png" width={32} height={32} />
           {/* ADD IN LOGO AND THE "BILAI" TEXT HERE */}
-          <h1 className="lg:text-1xl font-matcha-mint font-normal text-[#212922]">
+          <h1 className="lg:text-xl font-matcha-mint font-normal text-[#212922] mx-0.5">
             bilai.
           </h1>
         </div>
         <input
           type="text"
-          className="bg-[#FFFEEE] rounded-2xl p-1"
+          className="bg-[#FFFEEE] rounded-2xl p-1 w-3/5"
           placeholder="Search"
         />
         {/* Search */}
         <Link
-          href="font-Poppins"
-          className="text-[#212922] font-poppins font-bold hover:cursor-pointer`"
+          href="Home"
+          className="text-[#212922] font-poppins font-extrabold hover:text-[##080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5" 
         >
           Home
         </Link>
         <Link
           href="/add_cat"
-          className="text-[#212922] font-poppins font-bold hover:cursor-pointer"
+          className="text-[#212922] font-poppins font-extrabold hover:text-[##080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
         >
           Add a Cat
         </Link>
@@ -42,7 +42,7 @@ export default async function App() {
           {/* Add in the Profile image here */}
           <Link
             href="/login_form"
-            className="text-[#212922] font-poppins font-bold hover:cursor-pointer"
+            className="text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
           >
             Profile
           </Link>
@@ -50,8 +50,8 @@ export default async function App() {
         {/* Search */}
       </header>
       <div className="my-2 mx-4">
-        <h1 className="font-poppins font-bold lg:text-2xl text-[#212922] my-2">
-          Cats looking for a home
+        <h1 className="font-matcha-mint font-medium lg:text-2xl text-[#212922] my-2">
+          Cats looking for a Home
         </h1>
         <div className="flex flex-wrap gap-4 justify-center">
           {catData.map((e) => (

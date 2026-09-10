@@ -5,7 +5,8 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import placeholderCatPhoto from "../resources/sample_cat_photo.jpeg";
 import { addCatToDB } from "@/app/actions/cats";
-import { use, useState } from "react";
+import { clamp } from "lodash";
+import { useState } from "react";
 
 const spanStyling: string = "font-bold "; // Controls styling for the input titles
 const inputGroupStyling: string = "flex flex-col w-3/4"; // Controls styling for the stuff on the left
@@ -110,16 +111,18 @@ export default function Page() {
                   changeYear(Number(e.target.value));
                   // console.log(aboutCat);
                 }}
-                type="text"
+                type="number"
+                value={year}
                 placeholder="YY"
                 className="border rounded-2xl w-10"
               />
               <input
                 onChange={(e) => {
-                  changeMonth(Number(e.target.value));
+                  changeMonth(clamp(Number(e.target.value), 0, 11));
                   // console.log(aboutCat);
                 }}
-                type="text"
+                value={month}
+                type="number"
                 placeholder="MM"
                 className="border rounded-2xl w-10"
               />
@@ -198,12 +201,11 @@ export default function Page() {
           </div>
           <div className="flex flex-col">
             <span className={spanStyling}>About your cat</span>
-            <input
+            <textarea
               onChange={(e) => {
                 changeAboutCat(e.target.value);
                 // console.log(aboutCat);
               }}
-              type="text"
               value={aboutCat}
               className="border rounded-2xl"
             />

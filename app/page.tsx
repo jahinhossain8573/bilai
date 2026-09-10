@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Card from "./components/card";
-import { CreateCatInput } from "@/app/add_cat/page";
+import { CreateCatInput } from "@/app/actions/cats";
 import { prisma } from "@/lib/prisma";
 
 export default async function App() {
@@ -53,7 +53,13 @@ export default async function App() {
         <h1 className="font-poppins font-bold lg:text-2xl text-[#212922] my-2">
           Cats looking for a home
         </h1>
-        <div className="flex flex-wrap gap-4 justify-center"></div>
+        <div className="flex flex-wrap gap-4 justify-center">
+          {catData.map((e) => (
+            <div key={e.id}>
+              <Card catInput={e} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

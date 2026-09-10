@@ -36,7 +36,7 @@ export default function Card() {
         <div>
           {" "}
           {/* Line 3 — Location + WhatsApp */}
-          <div className="flex justify-between py-1">
+          <div className="flex justify-between py-1 items-center">
             <span>📍 Dhanmondi, Dhaka</span>
             <button className="bg-[#FA7D1F] rounded-xl px-1 py-1 text-[#f0eec9] font-poppins font-bold hover:bg-[#FA7D1F]/80">
               Text on WhatsApp

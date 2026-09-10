@@ -2,8 +2,6 @@
 
 import Image from "next/image";
 import { CreateCatInput } from "@/app/actions/cats";
-
-import catPhoto from "../resources/sample_cat_photo.jpeg";
 export default function Card({ catInput }: { catInput: CreateCatInput }) {
   function textOnWhatsApp() {
     const url = `https://wa.me/${8801732290601}?text=${encodeURIComponent("Hello!")}`;
@@ -35,11 +33,32 @@ export default function Card({ catInput }: { catInput: CreateCatInput }) {
           </li>
           <li>
             <span>•</span>
-            <span> {catInput.ageMonths} months</span>
+            <span>
+              {" "}
+              {Math.floor(catInput.ageMonths / 12)}{" "}
+              {Math.floor(catInput.ageMonths / 12) === 1 ? (
+                <span>year</span>
+              ) : (
+                <span>years</span>
+              )}
+            </span>
+            <span>
+              {" "}
+              {catInput.ageMonths % 12}{" "}
+              {catInput.ageMonths % 12 === 1 ? (
+                <span>month</span>
+              ) : (
+                <span>months</span>
+              )}
+            </span>
           </li>
           <li>
             <span>•</span>
-            <span> {catInput.gender}</span>
+            {catInput.gender === "MALE" ? (
+              <span> Male</span>
+            ) : (
+              <span> Female</span>
+            )}
           </li>
         </ul>
         <div>

@@ -11,7 +11,7 @@ export default async function App() {
   const catData = await getData();
   return (
     <div className="bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center w-full h-full min-h-screen">
-      <header className=" bg-[#f0eec9] p-1.5  flex justify-center gap-4 my-1.5 mx-1 items-center rounded-xl">
+      <header className=" bg-[#f0eec9] p-1.5  flex justify-center gap-2 my-1.5 mx-1 items-center rounded-xl">
         {/* Navbar */}
         <div className="bg-[#f0eec9] rounded-xl p-1 md:flex md:grid-cols-1 md:items-center">
           <img src="/Bilai.png" width={32} height={32} />
@@ -28,15 +28,23 @@ export default async function App() {
         {/* Search */}
         <Link
           href="Home"
-          className="text-[#212922] font-poppins font-extrabold hover:text-[##080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5" 
+          className="text-[#212922] font-poppins font-extrabold hover:text-[##080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
         >
           Home
         </Link>
         <Link
           href="/add_cat"
-          className="text-[#212922] font-poppins font-extrabold hover:text-[##080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
+          className="md:hidden text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
         >
-          Add a Cat
+          <span></span>
+          <span>Add</span>
+        </Link>
+        <Link
+          href="/add_cat"
+          className="hidden md:block text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5 whitespace-nowrap"
+        >
+          <span className="hidden lg:inline">Add a Cat</span>
+          <span className="lg:hidden">Add</span>
         </Link>
         <div>
           {/* Add in the Profile image here */}
@@ -50,7 +58,7 @@ export default async function App() {
         {/* Search */}
       </header>
       <div className="my-2 mx-4">
-        <h1 className="font-matcha-mint font-medium lg:text-2xl text-[#212922] my-2">
+        <h1 className="font-matcha-mint font-medium lg:text-2xl text-[#212922] my-2 text-center">
           Cats looking for a Home
         </h1>
         <div className="flex flex-wrap gap-4 justify-center">

@@ -3,7 +3,7 @@ import Image from "next/image";
 import catPhoto from "../resources/sample_cat_photo.jpeg";
 export default function Card() {
   return (
-    <div className="border w-fit rounded-2xl bg-[#f0eec9] shadow-md">
+    <div className="w-fit rounded-2xl bg-[#f0eec9] shadow-md">
       <Image
         src={catPhoto}
         width={300}

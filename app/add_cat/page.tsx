@@ -38,10 +38,29 @@ export default function Page() {
       gender: gender.toUpperCase() as "MALE" | "FEMALE",
       location,
       about: aboutCat,
-      imageUrl: placeholderCatPhoto.src, // swap for a real URL once upload is wired up
+      imageUrl: image
+        ? await fileToCompressedBase64(image, 400)
+        : placeholderCatPhoto,
     });
 
     router.push("/");
+  }
+
+  function fileToCompressedBase64(file: File, maxWidth = 800): Promise<string> {
+    return new Promise((resolve) => {
+      const img = document.createElement("img");
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const scale = Math.min(1, maxWidth / img.width);
+        canvas.width = img.width * scale;
+        canvas.height = img.height * scale;
+        canvas
+          .getContext("2d")!
+          .drawImage(img, 0, 0, canvas.width, canvas.height);
+        resolve(canvas.toDataURL("image/jpeg", 0.7)); // 0.7 = quality
+      };
+      img.src = URL.createObjectURL(file);
+    });
   }
 
   return (

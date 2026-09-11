@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Card from "./components/card";
 import { CreateCatInput } from "@/app/actions/cats";
 import { prisma } from "@/lib/prisma";
@@ -14,7 +15,7 @@ export default async function App() {
       <header className=" bg-[#f0eec9] p-1.5  flex justify-center gap-2 my-1.5 mx-1 items-center rounded-xl">
         {/* Navbar */}
         <div className="bg-[#f0eec9] rounded-xl p-1 md:flex md:grid-cols-1 md:items-center">
-          <img src="/Bilai.png" width={32} height={32} />
+          <Image src="/Bilai.png" width={32} height={32} alt="" />
           {/* ADD IN LOGO AND THE "BILAI" TEXT HERE */}
           <h1 className="lg:text-xl font-matcha-mint font-normal text-[#212922] mx-0.5">
             bilai.

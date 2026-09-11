@@ -8,12 +8,14 @@ import { redirect } from "next/navigation";
 import { signIn } from "@/auth"; // your auth.ts
 
 const signUpSchema = z.object({
+  name: z.string().trim().min(1, "Name is required"),
   email: z.string().email("Invalid email"),
   password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
 export async function signUp(formData: FormData) {
   const raw = {
+    name: formData.get("name"),
     email: formData.get("email"),
     password: formData.get("password"),
   };
@@ -24,7 +26,7 @@ export async function signUp(formData: FormData) {
     return { error: parsed.error.errors[0].message };
   }
 
-  const { email, password } = parsed.data;
+  const { name, email, password } = parsed.data;
 
   // Check if user already exists
   const existingUser = await prisma.user.findUnique({
@@ -41,6 +43,7 @@ export async function signUp(formData: FormData) {
   // Create user
   await prisma.user.create({
     data: {
+      name,
       email,
       password: hashedPassword,
     },
@@ -50,6 +53,6 @@ export async function signUp(formData: FormData) {
   await signIn("credentials", {
     email,
     password,
-    redirectTo: "/", // change to your desired page
+    redirectTo: "/login_form", // change to your desired page
   });
 }

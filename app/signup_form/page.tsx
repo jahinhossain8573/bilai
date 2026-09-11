@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { signUp } from "@/app/actions/auth";
 
 export default function Page() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -16,6 +17,7 @@ export default function Page() {
     setError(null);
 
     const formData = new FormData();
+    formData.append("name", name);
     formData.append("email", email);
     formData.append("password", password);
 
@@ -58,6 +60,20 @@ export default function Page() {
             <p className="text-red-600 text-sm mb-3 text-center">{error}</p>
           )}
           <form onSubmit={handleSubmit}>
+            <label
+              htmlFor="name"
+              className="block text-base mb-2 my-2 font-poppins font-bold"
+            >
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className=" bg-[#fffeee00] border border-gray-300 w-full rounded-md"
+              required
+            />
             <label
               htmlFor="email"
               className="block text-base mb-2 my-2 font-poppins font-bold"

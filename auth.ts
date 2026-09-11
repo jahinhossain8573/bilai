@@ -1,6 +1,5 @@
 // auth.ts
 import NextAuth from "next-auth";
-import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/lib/prisma"; // your Prisma client
@@ -16,10 +15,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(prisma),
   session: { strategy: "jwt" }, // or "database" if you prefer
   providers: [
-    Google({
-      // This is the key setting that allows linking
-      allowDangerousEmailAccountLinking: true,
-    }),
     Credentials({
       credentials: {
         email: { label: "Email", type: "email" },

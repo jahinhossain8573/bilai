@@ -9,7 +9,7 @@ export default function Card({ catInput }: { catInput: CreateCatInput }) {
     window.open(url, "_blank");
   }
   return (
-    <div className="w-fit rounded-2xl bg-[#f0eec9] shadow-md">
+    <div className="w-full rounded-2xl bg-[#f0eec9] shadow-md">
       <Image
         src={catInput.imageUrl}
         width={300}

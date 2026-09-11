@@ -44,8 +44,8 @@ export default async function App() {
           href="/add_cat"
           className="hidden md:block text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5 whitespace-nowrap"
         >
-          <span className="hidden lg:inline">Add a Cat</span>
-          <span className="lg:hidden">Add</span>
+          <span className="hidden lg:inline">+Cat Adoption </span>
+          <span className="lg:hidden">+Cat</span>
         </Link>
         <div>
           {/* Add in the Profile image here */}

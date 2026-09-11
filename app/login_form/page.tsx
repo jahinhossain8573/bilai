@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Page() {
   return (
@@ -51,8 +52,9 @@ export default function Page() {
               id="username"
               className=" bg-[#fffeee00] border border-gray-300 w-full rounded-md"
             />
-            <button className="border rounded-2xl px-2">Login</button>
-            <Link href="/signup_form">Don&apos;t have an account? Sign up</Link>
+
+            <Link href="/signup_form" className="mt-3">Don&apos;t have an account? Sign up</Link>
+
           </div>
         </div>
       </div>

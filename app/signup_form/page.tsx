@@ -1,11 +1,31 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import React, { useState } from "react";
+import { signUp } from "@/app/actions/auth";
 
 export default function Page() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    const formData = new FormData();
+    formData.append("email", email);
+    formData.append("password", password);
+
+    const result = await signUp(formData);
+
+    if (result?.error) {
+      setError(result.error);
+      setLoading(false);
+    }
+  }
 
   return (
     <div>
@@ -34,7 +54,10 @@ export default function Page() {
             </h2>
           </div>
           <hr className="mt-3" />
-          <div>
+          {error && (
+            <p className="text-red-600 text-sm mb-3 text-center">{error}</p>
+          )}
+          <form onSubmit={handleSubmit}>
             <label
               htmlFor="email"
               className="block text-base mb-2 my-2 font-poppins font-bold"
@@ -42,28 +65,34 @@ export default function Page() {
               Email
             </label>
             <input
-              type="text"
-              id="username"
+              type="email"
+              id="email"
               value={email}
-              onChange={(e) => setEmail(String(e))}
+              onChange={(e) => setEmail(String(e.target.value))}
               className=" bg-[#fffeee00] border border-gray-300 w-full rounded-md"
             />
             <label
-              htmlFor="email"
+              htmlFor="password"
               className="block text-base mb-2 my-2 font-poppins font-bold"
             >
               Password
             </label>
             <input
               type="password"
-              id="username"
+              id="password"
               value={password}
-              onChange={(e) => setPassword(String(e))}
+              onChange={(e) => setPassword(String(e.target.value))}
               className=" bg-[#fffeee00] border border-gray-300 w-full rounded-md"
             />
-            <button className="border rounded-2xl px-2">Sign Up</button>
+            <button
+              type="submit"
+              disabled={loading}
+              className="border rounded-2xl px-2"
+            >
+              {loading ? "Creating account..." : "Sign Up"}
+            </button>
             <Link href="/login_form">Already have an account? Sign in</Link>
-          </div>
+          </form>
         </div>
       </div>
     </div>

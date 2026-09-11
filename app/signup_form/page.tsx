@@ -20,7 +20,7 @@ export default function Page() {
         </div>
       </header>
       <div className="flex justify-center items-center bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center w-full h-full min-h-screen ">
-        <div className="w-125 p-10 shadow-lg bg-gradient-to-b from-[#ffffff] to-[#f0eec9] rounded-md">
+        <div className="w-125 p-10 shadow-lg bg-gradient-to-bg from-[#ffffff] to-[#f0eec9] rounded-md">
           <h1 className="font-poppins font-extrabold text-4xl text-[#212922] flex justify-center">
             Sign Up to
             <span className="font-matcha-mint font-normal lg:text-3xl text-[#212922] mx-2 my-2">

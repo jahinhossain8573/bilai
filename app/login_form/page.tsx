@@ -16,12 +16,12 @@ export default function Page() {
       </header>
 
       <div className="flex justify-center items-center bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center w-full h-full min-h-screen ">
-      <h1 className="font-matcha-mint font-medium lg:text-3xl ">
-        WELCOME BACK
-        <h2></h2>
-      </h1>
+        <h1 className="font-matcha-mint font-medium lg:text-3xl ">
+          WELCOME BACK
+          <h2></h2>
+        </h1>
 
-        <div className="w-125 p-10 shadow-lg bg-gradient-to-b from-[#fffff6] via-[#fffff6] to-[#ffe4cf] rounded-md">
+        <div className="w-125 p-10 shadow-lg bg-gradient-to-bg from-[#fffff6] via-[#fffff6] to-[#ffe4cf] rounded-md">
           <h1 className="font-poppins font-extrabold lg:text-4xl text-[#212922] flex justify-center">
             Log in to
             <span className="font-matcha-mint font-normal lg:text-3xl text-[#212922] mx-2 lg:my-2">
@@ -58,14 +58,22 @@ export default function Page() {
               id="username"
               className=" bg-[#fffeee00] border border-black w-full rounded-md h-8"
             />
-            <p className="">Don&apos;t have an account?{""}
-              <Link href="/signup_form" className="mx-0.5 font-poppins font-medium text-[#080808] hover:underline"> Sign up</Link>
+            <p className="">
+              Don&apos;t have an account?{""}
+              <Link
+                href="/signup_form"
+                className="mx-0.5 font-poppins font-medium text-[#080808] hover:underline"
+              >
+                {" "}
+                Sign up
+              </Link>
             </p>
             <div className="flex justify-center items-center">
-              <button className="mt-5 font-poppins font-bold text-2xl border-2 border-[#FA7D1F] bg-[#FA7D1F] rounded-xl py-1 w-full hover:bg-[#ffb175] hover:text-[#ffffff]"> LOGIN </button>
-
+              <button className="mt-5 font-poppins font-bold text-2xl border-2 border-[#FA7D1F] bg-[#FA7D1F] rounded-xl py-1 w-full hover:bg-[#ffb175] hover:text-[#ffffff]">
+                {" "}
+                LOGIN{" "}
+              </button>
             </div>
-
           </div>
         </div>
       </div>

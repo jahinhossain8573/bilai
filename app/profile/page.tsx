@@ -2,6 +2,8 @@
 import { useSession, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { getCurrentUser, updateProfile } from "@/app/actions/user";
+import { CatRecord } from "@/app/actions/cats";
+import Card from "@/app/components/card";
 import Link from "next/link";
 
 export default function Page() {
@@ -10,6 +12,7 @@ export default function Page() {
   const [WhatsApp, changeWhatsApp] = useState("");
   const [pastCats, changePastCats] = useState(0);
   const [currentCats, changeCurrentCats] = useState(0);
+  const [ownedCats, setOwnedCats] = useState<CatRecord[]>([]);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loaded, setLoaded] = useState(false);
@@ -22,6 +25,7 @@ export default function Page() {
         changeWhatsApp(user.whatsapp ?? "");
         changePastCats(user.catsOwnedInPast ?? 0);
         changeCurrentCats(user.catsAtHome ?? 0);
+        setOwnedCats(user.cats);
       }
       setLoaded(true);
     });
@@ -98,12 +102,29 @@ export default function Page() {
         </div>
 
         <div className="md:col-span-2 space-y-4">
-          {/*<div className="p-5 border">
+          <div className="p-5 border">
             <div className="flex justify-between items-center mb-3">
-              <h2>My cats</h2>
+              <h2>My cards</h2>
             </div>
-            <div className="grid sm:grid-cols-3 gap-3"></div>
-          </div>*/}
+            {ownedCats.length === 0 ? (
+              <p>You have not created any cards yet.</p>
+            ) : (
+              <div className="grid sm:grid-cols-2 gap-3">
+                {ownedCats.map((cat) => (
+                  <Card
+                    key={cat.id}
+                    catInput={cat}
+                    canDelete
+                    onDeleted={(catId) =>
+                      setOwnedCats((current) =>
+                        current.filter((ownedCat) => ownedCat.id !== catId),
+                      )
+                    }
+                  />
+                ))}
+              </div>
+            )}
+          </div>
 
           {error && <p className="text-red-500">{error}</p>}
 

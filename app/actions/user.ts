@@ -15,6 +15,11 @@ export async function getCurrentUser() {
 
   return prisma.user.findUnique({
     where: { email: session.user.email },
+    include: {
+      cats: {
+        orderBy: { createdAt: "desc" },
+      },
+    },
   });
 }
 

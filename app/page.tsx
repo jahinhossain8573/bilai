@@ -91,7 +91,10 @@ export default async function App() {
         <div className="flex flex-wrap gap-4 justify-center">
           {catData.map((e) => (
             <div key={e.id}>
-              <Card catInput={e} />
+              <Card
+                catInput={e}
+                canDelete={session?.user?.id === e.userId}
+              />
             </div>
           ))}
         </div>

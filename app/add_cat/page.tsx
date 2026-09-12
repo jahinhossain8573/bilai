@@ -65,20 +65,22 @@ export default function Page() {
   }
 
   return (
-    <div>
+    <div className="bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center w-full h-full min-h-screen">
       <header className="p-5 flex justify-center gap-x-48 items-center">
         {/* Navbar */}
-        <div>
+        <div className="md:flex md:grid-cols-1 md:items-center">
+          <Image src="/Bilai.png" width={48} height={48} alt="" />
+        
           {/* ADD IN LOGO AND THE "BILAI" TEXT HERE */}
-          <h1>BILAI</h1>
+          <h1 className="text-2xl font-matcha-mint text-[#212922] mx-0.5">bilai.</h1>
         </div>
         <div className=" text-center">
-          <h2 className="text-2xl font-bold">Cat for Adoption</h2>
+          <h2 className="text-xl xl:text-2xl font-poppins font-bold">Cat for Adoption</h2>
           <span>Help adopters find the cat</span>
         </div>
-        <Link href="/">BACK</Link>
+        <Link href="/" className=" text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5">BACK</Link>
       </header>
-      <div className="flex justify-center">
+      <div className="w-150 h-150 flex justify-center bg-gradient-to-b from-white to-[#a1cf6b] rounded-4xl px-6 py-10 ">
         <div className="flex flex-col gap-2">
           {/* Container for the stuff on the left */}
           <div className={inputGroupStyling}>

@@ -1,7 +1,32 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
+import React, { useState } from "react";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+  const router = useRouter();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+
+  async function login() {
+    const result = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+      redirectTo: "/", // change to your desired page
+    });
+
+    if (result?.error) {
+      setError("Invalid Email or Password");
+    } else {
+      router.push("/");
+      router.refresh();
+    }
+  }
   return (
     <div className="bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center w-full h-full min-h-screen">
       <header>
@@ -22,18 +47,18 @@ export default function Page() {
           </h1>
           <h1 className=" text-4xl xl:text-6xl font-matcha-mint text-[#212922] flex justify-center">
             Welcome
-         </h1>
-           <h2 className="text-xs md:text-xl font-poppins font-bold text-[#212922] flex justify-center">
+          </h1>
+          <h2 className="text-xs md:text-xl font-poppins font-bold text-[#212922] flex justify-center">
             Your cats have been waiting.
           </h2>
-      </div>
+        </div>
 
-        <div className="w-[90%] sm:w-full max-w-md p-6 md:p-12 shadow-lg bg-gradient-to-b from-[#ffffff] to-[#ffcaa1] rounded-4xl my-10 md:my-50 xl:my-30 xl:mx-60 md:mx-10 mx-auto">
+        <div className="w-[90%] sm:w-full max-w-md p-6 md:p-12 shadow-lg bg-linear-to-b from-[#ffffff] to-[#ffcaa1] rounded-4xl my-10 md:my-50 xl:my-30 xl:mx-60 md:mx-10 mx-auto">
           <h1 className="font-poppins font-extrabold text-2xl xl:text-3xl text-[#212922] flex justify-center">
             Log in to
-            <h1 className="font-matcha-mint font-normal text-2xl xl:text-3xl text-[#212922] mx-1.5 my-1 xl:my-1.5">
+            <span className="font-matcha-mint font-normal text-2xl xl:text-3xl text-[#212922] mx-1.5 my-1 xl:my-1.5">
               bilai.
-            </h1>
+            </span>
           </h1>
           <div>
             <h2 className="flex justify-center items-center font-sans font-normal ">
@@ -51,12 +76,16 @@ export default function Page() {
             </label>
             <input
               type="text"
-              id="username"
+              id="email"
               placeholder=" your@example.com"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               className=" bg-[#fffeee00] border border-black w-full h-8 rounded-md"
             />
             <label
-              htmlFor="email"
+              htmlFor="password"
               className="block text-base mb-2 my-5 font-poppins font-bold"
             >
               Password
@@ -64,17 +93,32 @@ export default function Page() {
             <input
               type="password"
               id="username"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               placeholder=" *******"
               className=" bg-[#fffeee00] border border-black w-full rounded-md h-8"
             />
-            <p className="">Don&apos;t have an account?{""}
-              <Link href="/signup_form" className="mx-0.5 font-poppins font-medium text-[#080808] hover:underline"> Sign up</Link>
+            <p className="">
+              Don&apos;t have an account?{""}
+              <Link
+                href="/signup_form"
+                className="mx-0.5 font-poppins font-medium text-[#080808] hover:underline"
+              >
+                Sign up
+              </Link>
             </p>
             <div className="flex justify-center items-center">
-              <button className="mt-5 font-poppins font-bold text-2xl border-2 border-[#FA7D1F] bg-[#FA7D1F] rounded-xl py-1 w-full hover:bg-[#ffb175] hover:text-[#ffffff]"> LOGIN </button>
-
+              <button
+                onClick={login}
+                className="mt-5 font-poppins font-bold text-2xl border-2 border-[#FA7D1F] bg-[#FA7D1F] rounded-xl py-1 w-full hover:bg-[#ffb175] hover:text-[#ffffff]"
+              >
+                {" "}
+                LOGIN{" "}
+              </button>
+              <span>{error}</span>
             </div>
-
           </div>
         </div>
       </div>

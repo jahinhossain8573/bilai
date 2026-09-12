@@ -28,10 +28,10 @@ export default function Page() {
           </h2>
       </div>
 
-        <div className=" w-125 p-15 shadow-lg bg-gradient-to-b from-[#fffff6] via-[#fffff6] to-[#ffe4cf] rounded-4xl my-10 xl:my-30 mx-30">
+        <div className="w-[90%] sm:w-full max-w-md p-6 md:p-12 shadow-lg bg-gradient-to-b from-[#ffffff] to-[#ffcaa1] rounded-4xl my-10 md:my-50 xl:my-30 xl:mx-60 md:mx-10 mx-auto">
           <h1 className="font-poppins font-extrabold text-2xl xl:text-3xl text-[#212922] flex justify-center">
             Log in to
-            <h1 className="font-matcha-mint font-normal text-2xl xl:text-3xl text-[#212922] mx-1.5 md:my-1">
+            <h1 className="font-matcha-mint font-normal text-2xl xl:text-3xl text-[#212922] mx-1.5 my-1 xl:my-1.5">
               bilai.
             </h1>
           </h1>

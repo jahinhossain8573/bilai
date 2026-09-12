@@ -80,18 +80,18 @@ export default function Page() {
         </div>
         <Link href="/" className=" text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5 mx-4">BACK</Link>
       </header>
-        <div className="flex justify-center  w-[60%] mx-auto p-8 md:p-12 shadow-lg bg-gradient-to-b from-[#ffffff] to-[#fdd299] rounded-4xl my-10">
+        <div className="flex justify-center  w-[70%] xl:w-[40%] mx-auto p-5 md:p-12 shadow-lg bg-gradient-to-b from-[#ffffff] to-[#fdd299] rounded-4xl my-5">
         <div className="">
          <div className=" text-center ">
-          <h2 className="text-xl xl:text-5xl font-poppins font-bold my-0.5">Cat for Adoption</h2>
-          <span className="text-poppins font-normal text-sm xl:text-lg my-4">Help adopters know about your cat</span>
+          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold">Cat for Adoption</h2>
+          <span className="text-xs sm:text-sm md:text-base text-gray-600">Help adopters know about your cat</span>
         </div>
           {/* Container for the stuff on the left */}
           <div className={inputGroupStyling}>
             <span className={spanStyling}>Name</span>
             <input
               type="text"
-              className="bg-[#fffeee] border border-black w-full rounded-md h-8 "
+              className="bg-[#fffeee] border border-black w-50 rounded-md h-8 xl:w-full "
               onChange={(e) => {
                 changeName(e.target.value);
                 // console.log(name);
@@ -102,7 +102,7 @@ export default function Page() {
             <span className={spanStyling}>Breed</span>
             <input
               type="text"
-              className="bg-[#fffeee] border border-black w-full h-8 rounded-md"
+              className="bg-[#fffeee] border border-black w-50 rounded-md h-8 xl:w-full"
               onChange={(e) => {
                 changeBreed(e.target.value);
                 // console.log(breed);
@@ -142,7 +142,7 @@ export default function Page() {
             <span className={spanStyling}>Location</span>
             <input
               type="text"
-              className="bg-[#fffeee] border border-black w-full rounded-md h-8"
+              className="bg-[#fffeee] border border-black  w-50 rounded-md h-8 xl:w-full"
               onChange={(e) => {
                 changeLocation(e.target.value);
                 // console.log(location);
@@ -186,7 +186,7 @@ export default function Page() {
                 changeImage(file);
                 changeImagePreview(URL.createObjectURL(file));
               }}
-              className=""
+              className=" w-50 rounded-md h-8 xl:w-full"
             />
             {imagePreview && (
               <Image

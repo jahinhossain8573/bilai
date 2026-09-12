@@ -4,7 +4,8 @@ import Image from "next/image";
 import { CreateCatInput } from "@/app/actions/cats";
 export default function Card({ catInput }: { catInput: CreateCatInput }) {
   function textOnWhatsApp() {
-    const url = `https://wa.me/${8801732290601}?text=${encodeURIComponent("Hello!")}`;
+    if (!catInput.whatsapp) return;
+    const url = `https://wa.me/${catInput.whatsapp}?text=${encodeURIComponent("Hello!")}`;
 
     window.open(url, "_blank");
   }

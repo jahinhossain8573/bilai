@@ -79,12 +79,15 @@ export default function Page() {
               <h2>Profile information</h2>
             </div>
             <p>WhatsApp:</p>
-            <input
-              type="text"
-              value={WhatsApp}
-              onChange={(e) => changeWhatsApp(e.target.value)}
-              className="border"
-            />
+            <div>
+              <span>+88</span>
+              <input
+                type="text"
+                value={WhatsApp}
+                onChange={(e) => changeWhatsApp(e.target.value)}
+                className="border"
+              />
+            </div>
           </div>
         </div>
 

@@ -46,10 +46,10 @@ export default function Page() {
           <h1 className="font-poppins font-bold text-[#FA7D1F] text-xs xl:text-xl flex justify-center">
             A HOME FOR EVERY CAT
           </h1>
-           <h1 className=" text-4xl xl:text-6xl font-matcha-mint text-[#212922] flex justify-center">
+          <h1 className=" text-4xl xl:text-6xl font-matcha-mint text-[#212922] flex justify-center">
             JOIN US
           </h1>
-           <h2 className="text-xs md:text-xl font-poppins font-bold text-[#212922] flex justify-center">
+          <h2 className="text-xs md:text-xl font-poppins font-bold text-[#212922] flex justify-center">
             Build your cats a bright future.
           </h2>
         </div>
@@ -116,19 +116,25 @@ export default function Page() {
             />
             <p>
               Already have an account?
-            <Link 
-            href="/login_form" 
-            className="mx-0.5 font-poppins font-medium text-[#080808] hover:underline"> 
-            Log in
-            </Link>
+              <Link
+                href="/login_form"
+                className="mx-0.5 font-poppins font-medium text-[#080808] hover:underline"
+              >
+                Log in
+              </Link>
             </p>
             <button
               type="submit"
               disabled={loading}
-className="mt-5 font-poppins font-bold text-2xl border-2 border-[#FA7D1F] bg-[#FA7D1F] rounded-xl py-1 w-full hover:bg-[#ffb175] hover:text-[#ffffff]"            >
+              className="mt-5 font-poppins font-bold text-2xl border-2 border-[#FA7D1F] bg-[#FA7D1F] rounded-xl py-1 w-full hover:bg-[#ffb175] hover:text-[#ffffff]"
+            >
               {loading ? "Creating account..." : "Sign Up"}
             </button>
           </form>
+          <span>
+            Do not forget to add your WhatsApp number in your profile once you
+            are done
+          </span>
         </div>
       </div>
     </div>

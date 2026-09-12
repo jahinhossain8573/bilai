@@ -22,6 +22,7 @@ model Cat {
   about     String?
   imageUrl  String?
   parentName String
+  whatsapp String?
 
   createdAt DateTime @default(now())
 }

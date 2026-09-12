@@ -49,12 +49,12 @@ export default function Page() {
           </h1>
           <h1 className=" text-4xl xl:text-6xl font-matcha-mint text-[#212922] flex justify-center">
             Join Us
-         </h1>
-           <h2 className="text-xs md:text-sm font-poppins font-bold text-[#212922] flex justify-center">
+          </h1>
+          <h2 className="text-xs md:text-sm font-poppins font-bold text-[#212922] flex justify-center">
             Give your cats a better future.
           </h2>
-      </div>        
-      <div className="w-[90%] sm:w-full max-w-md p-6 md:p-12 shadow-lg bg-gradient-to-bg from-[#ffffff] to-[#f0eec9] rounded-4xl my-10 md:my-50 xl:my-30 xl:mx-60 md:mx-10 mx-auto">
+        </div>
+        <div className="w-[90%] sm:w-full max-w-md p-6 md:p-12 shadow-lg bg-gradient-to-bg from-[#ffffff] to-[#f0eec9] rounded-4xl my-10 md:my-50 xl:my-30 xl:mx-60 md:mx-10 mx-auto">
           <h1 className="font-poppins font-extrabold text-2xl xl:text-3xl text-[#212922] flex justify-center">
             Sign Up to
             <span className="font-matcha-mint font-normal text-2xl xl:text-3xl text-[#212922] mx-1.5 my-1 xl:my-1.5">
@@ -121,14 +121,22 @@ export default function Page() {
             </button>
             <Link href="/login_form">Already have an account? Sign in</Link>
           </form>
-            <p className="">Already have an account?{""}
-              <Link href="/login_form" className="mx-0.5 font-poppins font-medium text-[#080808] hover:underline"> Sign in</Link>
-            </p>
-          </div>
-                      <div className="flex justify-center items-center">
-              <button className="mt-5 font-poppins font-bold text-2xl border-2 border-[#a1cf6b] bg-[#a1cf6b] rounded-xl py-1 w-full hover:bg-[#d5f8ad] hover:text-[#a7a5a5]"> Sign Up </button>
-
-            </div>
+          <p className="">
+            Already have an account?{""}
+            <Link
+              href="/login_form"
+              className="mx-0.5 font-poppins font-medium text-[#080808] hover:underline"
+            >
+              {" "}
+              Sign in
+            </Link>
+          </p>
+        </div>
+        <div className="flex justify-center items-center">
+          <button className="mt-5 font-poppins font-bold text-2xl border-2 border-[#a1cf6b] bg-[#a1cf6b] rounded-xl py-1 w-full hover:bg-[#d5f8ad] hover:text-[#a7a5a5]">
+            {" "}
+            Sign Up{" "}
+          </button>
         </div>
       </div>
     </div>

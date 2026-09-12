@@ -5,7 +5,7 @@ import { CreateCatInput } from "@/app/actions/cats";
 export default function Card({ catInput }: { catInput: CreateCatInput }) {
   function textOnWhatsApp() {
     if (!catInput.whatsapp) return;
-    const url = `https://wa.me/${catInput.whatsapp}?text=${encodeURIComponent("Hello!")}`;
+    const url = `https://wa.me/${"88" + catInput.whatsapp}?text=${encodeURIComponent("Hello! I found your cat " + catInput.name + " listed on Bilai. Could you please give me some additional information?")}`;
 
     window.open(url, "_blank");
   }

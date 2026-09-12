@@ -151,16 +151,18 @@ export default function Page() {
           {/* Container for the stuff on the right */}
           <div>
             <span className={spanStyling}>Gender</span>
-            <div>
+            <div className="">
               <input
                 name="gender"
                 type="radio"
                 onChange={() => {
                   changeGender("MALE");
                   // console.log(gender);
+                  
                 }}
+                
               />
-              <span>Male</span>
+              <span className="mx-2">Male</span>
               <input
                 name="gender"
                 type="radio"
@@ -169,7 +171,7 @@ export default function Page() {
                   // console.log(gender);
                 }}
               />
-              <span>Female</span>
+              <span className="mx-2">Female</span>
             </div>
           </div>
           <div className="flex flex-col border rounded-2xl p-3 bg-[#fffeee] my-2 h-30">

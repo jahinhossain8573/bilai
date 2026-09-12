@@ -69,7 +69,7 @@ export default function Page() {
             <h1>{username}</h1>
           </div>
         </div>
-        <div className="flex divide-x border">
+        {/*<div className="flex divide-x border">
           <div className="px-6 py-4 text-center">
             <input
               value={currentCats}
@@ -88,7 +88,7 @@ export default function Page() {
             />
             <p>Cats owned in the past</p>
           </div>
-        </div>
+        </div>*/}
       </div>
 
       <div className="grid md:grid-cols-3 gap-4">
@@ -115,7 +115,7 @@ export default function Page() {
         <div className="md:col-span-2 space-y-4">
           <div className="p-5 border">
             <div className="flex justify-between items-center mb-3">
-              <h2>My cards</h2>
+              {/*<h2>My cards</h2>
               <div className="p-5 border">
                 <div className="flex justify-center items-center mb-3">
                   <h2>My cats</h2>
@@ -129,6 +129,7 @@ export default function Page() {
                         key={cat.id}
                         catInput={cat}
                         canDelete
+                        showWhatsApp={false}
                         onDeleted={(catId) =>
                           setOwnedCats((current) =>
                             current.filter((ownedCat) => ownedCat.id !== catId),
@@ -138,7 +139,7 @@ export default function Page() {
                     ))}
                   </div>
                 )}
-              </div>
+              </div>*/}
 
               {error && <p className="text-red-500">{error}</p>}
 

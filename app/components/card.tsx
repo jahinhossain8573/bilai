@@ -9,10 +9,12 @@ import { CatRecord, deleteCatFromDB } from "@/app/actions/cats";
 export default function Card({
   catInput,
   canDelete,
+  showWhatsApp = true,
   onDeleted,
 }: {
   catInput: CatRecord;
   canDelete: boolean;
+  showWhatsApp?: boolean;
   onDeleted?: (catId: number) => void;
 }) {
   const router = useRouter();
@@ -105,12 +107,14 @@ export default function Card({
           <div className="flex justify-between py-1 items-center">
             <span>📍 {catInput.location}</span>
             <div className="flex gap-1">
-              <button
-                onClick={textOnWhatsApp}
-                className="bg-[#FA7D1F] rounded-xl px-1 py-1 text-[#f0eec9] font-poppins font-bold hover:bg-[#FA7D1F]/80"
-              >
-                Text on WhatsApp
-              </button>
+              {showWhatsApp && (
+                <button
+                  onClick={textOnWhatsApp}
+                  className="bg-[#FA7D1F] rounded-xl px-1 py-1 text-[#f0eec9] font-poppins font-bold hover:bg-[#FA7D1F]/80"
+                >
+                  Text on WhatsApp
+                </button>
+              )}
               {canDelete && (
                 <button
                   onClick={deleteCard}

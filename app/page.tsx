@@ -3,8 +3,11 @@ import Image from "next/image";
 import Card from "./components/card";
 import { CreateCatInput } from "@/app/actions/cats";
 import { prisma } from "@/lib/prisma";
+import { auth } from "@/auth";
 
 export default async function App() {
+  const session = await auth();
+
   async function getData() {
     const data: CreateCatInput[] = await prisma.cat.findMany();
     return data;
@@ -37,7 +40,6 @@ export default async function App() {
           href="/add_cat"
           className="md:hidden text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
         >
-          <span></span>
           <span>Add</span>
         </Link>
         <Link
@@ -53,7 +55,7 @@ export default async function App() {
             href="/login_form"
             className="text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
           >
-            Profile
+            {auth === null ? <span>Login</span> : <span>Profile</span>}
           </Link>
         </div>
         {/* Search */}

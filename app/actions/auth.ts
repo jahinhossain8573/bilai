@@ -53,6 +53,6 @@ export async function signUp(formData: FormData) {
   await signIn("credentials", {
     email,
     password,
-    redirectTo: "/login_form", // change to your desired page
+    redirectTo: "/", // change to your desired page
   });
 }

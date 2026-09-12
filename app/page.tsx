@@ -37,36 +37,56 @@ export default async function App() {
           Home
         </Link>
         {session === null ? (
-          <Link
-            href={"/login_form"}
-            className="md:hidden text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
-          >
-            <span>Add</span>
-          </Link>
+          <div>
+            <Link
+              href={"/login_form"}
+              className="md:hidden text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
+            >
+              <span>+Cat</span>
+            </Link>
+            <Link
+              href="/login_form"
+              className="hidden md:block text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5 whitespace-nowrap"
+            >
+              <span className="hidden lg:inline">+Cat</span>
+              <span className="lg:hidden">+Cat</span>
+            </Link>
+          </div>
         ) : (
-          <Link
-            href={"/add_cat"}
-            className="md:hidden text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
-          >
-            <span>Add</span>
-          </Link>
+          <div>
+            <Link
+              href={"/add_cat"}
+              className="md:hidden text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
+            >
+              <span>+Cat</span>
+            </Link>
+            <Link
+              href="/add_cat"
+              className="hidden md:block text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5 whitespace-nowrap"
+            >
+              <span className="hidden lg:inline">+Cat</span>
+              <span className="lg:hidden">+Cat</span>
+            </Link>
+          </div>
         )}
 
-        <Link
-          href="/add_cat"
-          className="hidden md:block text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5 whitespace-nowrap"
-        >
-          <span className="hidden lg:inline">+Cat Adoption </span>
-          <span className="lg:hidden">+Cat</span>
-        </Link>
         <div>
           {/* Add in the Profile image here */}
-          <Link
-            href="/login_form"
-            className="text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
-          >
-            {auth === null ? <span>Login</span> : <span>Profile</span>}
-          </Link>
+          {auth === null ? (
+            <Link
+              href="/login_form"
+              className="text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
+            >
+              <span>Login</span>
+            </Link>
+          ) : (
+            <Link
+              href="/profile"
+              className="text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
+            >
+              <span>Profile</span>
+            </Link>
+          )}
         </div>
         {/* Search */}
       </header>

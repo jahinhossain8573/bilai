@@ -1,10 +1,39 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useTransition } from "react";
 import placeholderCatPhoto from "@/app/resources/sample_cat_photo.jpeg";
-import { CatRecord } from "@/app/actions/cats";
+import { CatRecord, deleteCatFromDB } from "@/app/actions/cats";
 
-export default function Card({ catInput }: { catInput: CatRecord }) {
+export default function Card({
+  catInput,
+  canDelete,
+  onDeleted,
+}: {
+  catInput: CatRecord;
+  canDelete: boolean;
+  onDeleted?: (catId: number) => void;
+}) {
+  const router = useRouter();
+  const [isDeleting, startDeleting] = useTransition();
+
+  function deleteCard() {
+    if (!window.confirm(`Delete ${catInput.name}'s card?`)) return;
+
+    startDeleting(async () => {
+      try {
+        await deleteCatFromDB(catInput.id);
+        onDeleted?.(catInput.id);
+        router.refresh();
+      } catch (error) {
+        window.alert(
+          error instanceof Error ? error.message : "Unable to delete this card.",
+        );
+      }
+    });
+  }
+
   function textOnWhatsApp() {
     if (!catInput.whatsapp) return;
     const url = `https://wa.me/${"88" + catInput.whatsapp}?text=${encodeURIComponent("Hello! I found your cat " + catInput.name + " listed on Bilai. Could you please give me some additional information?")}`;
@@ -75,12 +104,23 @@ export default function Card({ catInput }: { catInput: CatRecord }) {
           {/* Line 3 — Location + WhatsApp */}
           <div className="flex justify-between py-1 items-center">
             <span>📍 {catInput.location}</span>
-            <button
-              onClick={textOnWhatsApp}
-              className="bg-[#FA7D1F] rounded-xl px-1 py-1 text-[#f0eec9] font-poppins font-bold hover:bg-[#FA7D1F]/80"
-            >
-              Text on WhatsApp
-            </button>
+            <div className="flex gap-1">
+              <button
+                onClick={textOnWhatsApp}
+                className="bg-[#FA7D1F] rounded-xl px-1 py-1 text-[#f0eec9] font-poppins font-bold hover:bg-[#FA7D1F]/80"
+              >
+                Text on WhatsApp
+              </button>
+              {canDelete && (
+                <button
+                  onClick={deleteCard}
+                  disabled={isDeleting}
+                  className="bg-red-600 rounded-xl px-1 py-1 text-white font-poppins font-bold hover:bg-red-700 disabled:opacity-50"
+                >
+                  {isDeleting ? "Deleting..." : "Delete"}
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>

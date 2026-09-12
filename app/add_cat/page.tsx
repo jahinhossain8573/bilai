@@ -74,14 +74,14 @@ export default function Page() {
           {/* ADD IN LOGO AND THE "BILAI" TEXT HERE */}
           <h1 className="text-2xl font-matcha-mint text-[#212922] mx-0.5">bilai.</h1>
         </div>
-        <div className=" text-center">
-          <h2 className="text-xl xl:text-5xl font-poppins font-extrabold my-1">Cat for Adoption</h2>
-          <span className="my-4">Help adopters find the cat</span>
-        </div>
         <Link href="/" className=" text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5">BACK</Link>
       </header>
-        <div className="w-full sm:w-full max-w-md mx-auto p-6 md:p-12 shadow-lg bg-gradient-to-b from-[#ffffff] to-[#bad69a] rounded-4xl my-20">
+        <div className="flex justify-center  w-[80%] mx-auto p-6 md:p-12 shadow-lg bg-gradient-to-b from-[#ffffff] to-[#fdd299] rounded-4xl my-20">
         <div className="">
+         <div className=" text-center">
+          <h2 className="text-xl xl:text-5xl font-poppins font-extrabold my-1">Cat for Adoption</h2>
+          <span className="my-4">Help adopters know about your cat</span>
+        </div>
           {/* Container for the stuff on the left */}
           <div className={inputGroupStyling}>
             <span className={spanStyling}>Name</span>
@@ -201,13 +201,13 @@ export default function Page() {
             />
           </div>
         </div>
-        <div>
+        <div className=" text-flex flex-col items-center gap-2">
           <button
             onClick={saveProfile}
-            className="bg-green-400 p-2 rounded-2xl hover:cursor-pointer hover:bg-green-500 font-extrabold my-2 flex justify-center items-center w-full" >
+            className="w-full bg-[#0ce743] hover:bg-[#7cae4c] transition-colors text-[#060706] font-extrabold py-3 rounded-2xl text-center my-2" >
             Save Cat Profile
           </button>
-          <span className="text-zinc-500 font-poppins font-bold flex justify-center items-center w-full">
+          <span className="text-zinc-700 font-poppins font-normal text-xs flex justify-center items-center w-full">
             You can edit these details later
           </span>
         </div>

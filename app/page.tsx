@@ -15,7 +15,7 @@ export default async function App() {
   const catData = await getData();
   return (
     <div className="bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center w-full h-full min-h-screen">
-      <header className=" bg-[#f0eec9] p-1.5  flex justify-center gap-2 my-1.5 mx-1 items-center rounded-xl">
+      <header className=" bg-[#f0eec9] p-1.5  flex justify-center gap-2 items-center ">
         {/* Navbar */}
         <div className="bg-[#f0eec9] rounded-xl p-1 md:flex md:grid-cols-1 md:items-center">
           <Image src="/Bilai.png" width={32} height={32} alt="" />

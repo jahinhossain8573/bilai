@@ -107,7 +107,7 @@ export default function Page() {
           <div className="p-5 border">
             <div className="flex justify-between items-center mb-3">
               <h2>My cards</h2>
-          {/*<div className="p-5 border">
+          <div className="p-5 border">
             <div className="flex justify-center items-center mb-3">
               <h2>My cats</h2>
             </div>

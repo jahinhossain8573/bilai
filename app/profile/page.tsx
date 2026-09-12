@@ -63,10 +63,10 @@ export default function Page() {
         </Link>
       </header>
 
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 p-6 border">
+      <div className=" bg-[#FA7D1f] w-full flex flex-col md:flex-row md:items-center md:justify-between gap-6 p-6 border">
         <div className="flex items-center gap-4">
           <div>
-            <h1>{username}</h1>
+            <h1 className="font-matcha-mint">{username}</h1>
           </div>
         </div>
         {/*<div className="flex divide-x border">
@@ -91,10 +91,10 @@ export default function Page() {
         </div>*/}
       </div>
 
-      <div className="grid md:grid-cols-3 gap-4">
+      <div className="grid md:grid-cols-3 gap-4 mx-10">
         <div className="w-[90%] sm:w-full max-w-md p-6 md:p-12 shadow-2xl bg-[#FA7D1F] rounded-xl my-10 mx-auto">
           <div className="p-3">
-            <div className="flex justify-between items-center mb-3">
+            <div className=" justify-between items-center mb-3">
               <h2 className="font-poppins font-bold text-3xl text-amber-50">
                 Profile information
               </h2>
@@ -113,8 +113,8 @@ export default function Page() {
         </div>
 
         <div className="md:col-span-2 space-y-4">
-          <div className="p-5 border">
-            <div className="flex justify-between items-center mb-3">
+          <div className="">
+            <div className="">
               {/*<h2>My cards</h2>
               <div className="p-5 border">
                 <div className="flex justify-center items-center mb-3">

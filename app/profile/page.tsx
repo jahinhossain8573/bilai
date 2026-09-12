@@ -3,6 +3,7 @@ import { useSession, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { getCurrentUser, updateProfile } from "@/app/actions/user";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Page() {
   const { data: session } = useSession();
@@ -40,14 +41,15 @@ export default function Page() {
   }
 
   return (
-    <div>
-      <header className="flex justify-between items-center p-3 border">
-        <div>
-          <span>bilai</span>
+    <div className="bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center w-full h-full min-h-screen">
+      <header className="p-5 flex justify-between gap-x-48 items-center">
+        {/* Navbar */}
+        <div className="md:flex md:grid-cols-1 md:items-center">
+          <Image src="/Bilai.png" width={48} height={48} alt="" />
+      
+          <h1 className="text-2xl font-matcha-mint text-[#212922] mx-0.5">bilai.</h1>
         </div>
-        <div>
-          <Link href="/">Back</Link>
-        </div>
+        <Link href="/" className=" text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5 mx-4">BACK</Link>
       </header>
 
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 p-6 border">
@@ -79,19 +81,19 @@ export default function Page() {
       </div>
 
       <div className="grid md:grid-cols-3 gap-4">
-        <div className="space-y-4">
-          <div className="p-5 border">
+        <div className="w-[90%] sm:w-full max-w-md p-6 md:p-12 shadow-2xl bg-[#FA7D1F] rounded-xl my-10 mx-auto">
+          <div className="p-3">
             <div className="flex justify-between items-center mb-3">
-              <h2>Profile information</h2>
+              <h2 className="font-poppins font-bold text-3xl text-amber-50">Profile information</h2>
             </div>
-            <p>WhatsApp:</p>
-            <div>
-              <span>+88</span>
+            <p className=" font-bold text-xl text-amber-50">WhatsApp:</p>
+            <div className="my-5">
+              <span className="font-bold">+88</span>
               <input
                 type="text"
                 value={WhatsApp}
                 onChange={(e) => changeWhatsApp(e.target.value)}
-                className="border"
+                className="border border-amber-50 mx-1"
               />
             </div>
           </div>
@@ -99,7 +101,7 @@ export default function Page() {
 
         <div className="md:col-span-2 space-y-4">
           {/*<div className="p-5 border">
-            <div className="flex justify-between items-center mb-3">
+            <div className="flex justify-center items-center mb-3">
               <h2>My cats</h2>
             </div>
             <div className="grid sm:grid-cols-3 gap-3"></div>
@@ -111,14 +113,13 @@ export default function Page() {
             <button
               onClick={handleSave}
               disabled={saving || !loaded}
-              className="flex-1 py-2 border"
-            >
+            className="w-full bg-[#0ce743] hover:bg-[#7cae4c] transition-colors text-[#060706] font-extrabold py-3 rounded-2xl text-center my-2" >
+            
               {saving ? "Saving..." : "Save"}
             </button>
             <button
               onClick={() => signOut({ callbackUrl: "/" })}
-              className="flex-1 py-2 border"
-            >
+            className="w-full bg-[#0ce743] hover:bg-[#7cae4c] transition-colors text-[#060706] font-extrabold py-3 rounded-2xl text-center my-2" >
               Log out
             </button>
           </div>

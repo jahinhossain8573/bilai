@@ -1,7 +1,32 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
+import React, { useState } from "react";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+  const router = useRouter();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+
+  async function login() {
+    const result = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+      redirectTo: "/", // change to your desired page
+    });
+
+    if (result?.error) {
+      setError("Invalid Email or Password");
+    } else {
+      router.push("/");
+      router.refresh();
+    }
+  }
   return (
     <div className="bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center w-full h-full min-h-screen">
       <header>
@@ -28,12 +53,12 @@ export default function Page() {
           </h2>
         </div>
 
-        <div className=" w-125 p-15 shadow-lg bg-gradient-to-b from-[#fffff6] via-[#fffff6] to-[#ffe4cf] rounded-4xl my-10 xl:my-30 mx-30">
+        <div className=" w-125 p-15 shadow-lg bg-linear-to-b from-[#fffff6] via-[#fffff6] to-[#ffe4cf] rounded-4xl my-10 xl:my-30 mx-30">
           <h1 className="font-poppins font-extrabold text-2xl xl:text-3xl text-[#212922] flex justify-center">
             Log in to
-            <h1 className="font-matcha-mint font-normal text-2xl xl:text-3xl text-[#212922] mx-1.5 md:my-1">
+            <span className="font-matcha-mint font-normal text-2xl xl:text-3xl text-[#212922] mx-1.5 md:my-1">
               bilai.
-            </h1>
+            </span>
           </h1>
           <div>
             <h2 className="flex justify-center items-center font-sans font-normal ">
@@ -51,12 +76,16 @@ export default function Page() {
             </label>
             <input
               type="text"
-              id="username"
+              id="email"
               placeholder=" your@example.com"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               className=" bg-[#fffeee00] border border-black w-full h-8 rounded-md"
             />
             <label
-              htmlFor="email"
+              htmlFor="password"
               className="block text-base mb-2 my-5 font-poppins font-bold"
             >
               Password
@@ -64,6 +93,10 @@ export default function Page() {
             <input
               type="password"
               id="username"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               placeholder=" *******"
               className=" bg-[#fffeee00] border border-black w-full rounded-md h-8"
             />
@@ -73,15 +106,18 @@ export default function Page() {
                 href="/signup_form"
                 className="mx-0.5 font-poppins font-medium text-[#080808] hover:underline"
               >
-                {" "}
                 Sign up
               </Link>
             </p>
             <div className="flex justify-center items-center">
-              <button className="mt-5 font-poppins font-bold text-2xl border-2 border-[#FA7D1F] bg-[#FA7D1F] rounded-xl py-1 w-full hover:bg-[#ffb175] hover:text-[#ffffff]">
+              <button
+                onClick={login}
+                className="mt-5 font-poppins font-bold text-2xl border-2 border-[#FA7D1F] bg-[#FA7D1F] rounded-xl py-1 w-full hover:bg-[#ffb175] hover:text-[#ffffff]"
+              >
                 {" "}
                 LOGIN{" "}
               </button>
+              <span>{error}</span>
             </div>
           </div>
         </div>

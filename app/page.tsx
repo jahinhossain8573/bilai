@@ -36,12 +36,22 @@ export default async function App() {
         >
           Home
         </Link>
-        <Link
-          href="/add_cat"
-          className="md:hidden text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
-        >
-          <span>Add</span>
-        </Link>
+        {session === null ? (
+          <Link
+            href={"/login_form"}
+            className="md:hidden text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
+          >
+            <span>Add</span>
+          </Link>
+        ) : (
+          <Link
+            href={"/add_cat"}
+            className="md:hidden text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
+          >
+            <span>Add</span>
+          </Link>
+        )}
+
         <Link
           href="/add_cat"
           className="hidden md:block text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5 whitespace-nowrap"

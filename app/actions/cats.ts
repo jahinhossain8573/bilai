@@ -9,15 +9,20 @@ export type CreateCatInput = {
   ageMonths: number;
   gender: "MALE" | "FEMALE";
   location: string;
-  about: string;
-  imageUrl: string;
+  about?: string | null;
+  imageUrl?: string | null;
+};
+
+export type CatRecord = CreateCatInput & {
+  id: number;
   parentName: string;
-  whatsapp?: string | null;
+  whatsapp: string | null;
+  createdAt: Date;
 };
 
 export async function addCatToDB(catInput: CreateCatInput) {
   const session = await auth();
-  const username = session?.user?.name;
+  const username = session?.user?.name ?? "Unknown owner";
 
   const user = session?.user?.email
     ? await prisma.user.findUnique({
@@ -33,8 +38,8 @@ export async function addCatToDB(catInput: CreateCatInput) {
       ageMonths: catInput.ageMonths,
       gender: catInput.gender,
       location: catInput.location,
-      about: catInput.about,
-      imageUrl: catInput.imageUrl,
+      about: catInput.about ?? null,
+      imageUrl: catInput.imageUrl ?? null,
       parentName: username,
       whatsapp: user?.whatsapp ?? null,
     },

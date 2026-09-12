@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Card from "./components/card";
-import { CreateCatInput } from "@/app/actions/cats";
+import { CatRecord } from "@/app/actions/cats";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 
@@ -9,7 +9,7 @@ export default async function App() {
   const session = await auth();
 
   async function getData() {
-    const data: CreateCatInput[] = await prisma.cat.findMany();
+    const data: CatRecord[] = await prisma.cat.findMany();
     return data;
   }
   const catData = await getData();

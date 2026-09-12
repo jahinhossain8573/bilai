@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { CreateCatInput } from "@/app/actions/cats";
-export default function Card({ catInput }: { catInput: CreateCatInput }) {
+import placeholderCatPhoto from "@/app/resources/sample_cat_photo.jpeg";
+import { CatRecord } from "@/app/actions/cats";
+
+export default function Card({ catInput }: { catInput: CatRecord }) {
   function textOnWhatsApp() {
     if (!catInput.whatsapp) return;
     const url = `https://wa.me/${"88" + catInput.whatsapp}?text=${encodeURIComponent("Hello! I found your cat " + catInput.name + " listed on Bilai. Could you please give me some additional information?")}`;
@@ -12,7 +14,7 @@ export default function Card({ catInput }: { catInput: CreateCatInput }) {
   return (
     <div className="w-full rounded-2xl bg-[#f0eec9] shadow-md">
       <Image
-        src={catInput.imageUrl}
+        src={catInput.imageUrl ?? placeholderCatPhoto.src}
         width={300}
         height={200}
         alt=""

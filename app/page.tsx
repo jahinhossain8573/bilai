@@ -72,7 +72,7 @@ export default async function App() {
 
         <div>
           {/* Add in the Profile image here */}
-          {auth === null ? (
+          {session === null ? (
             <Link
               href="/login_form"
               className="text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"

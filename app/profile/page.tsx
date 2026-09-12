@@ -1,19 +1,69 @@
 "use client";
 import { SessionProvider, useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
+import Link from "next/link";
 
 export default function Page() {
   const { data: session } = useSession();
   return (
     <div>
-      <button
-        onClick={() => {
-          signOut({ callbackUrl: "/" });
-        }}
-        className="border py-1 px-2 rounded-2xl"
-      >
-        Sign Out
-      </button>
+      <header className="flex justify-between items-center p-3 border">
+        <div>bilai</div>
+      </header>
+
+      {/* Profile card */}
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 p-6 border">
+        <div className="flex items-center gap-4">
+          <div className="w-20 h-20 border">{/* avatar */}</div>
+          <div>
+            <h1>X X</h1>
+          </div>
+        </div>
+        <div className="flex divide-x border">
+          <div className="px-6 py-4 text-center">
+            <p>5</p>
+            <p>Cats owned in the past</p>
+          </div>
+          <div className="px-6 py-4 text-center">
+            <p>2</p>
+            <p>Cats at home</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-4">
+        {/* Left column */}
+        <div className="space-y-4">
+          <div className="p-5 border">
+            <div className="flex justify-between items-center mb-3">
+              <h2>Profile information</h2>
+            </div>
+            <p>WhatsApp:</p>
+            <p className="mb-2">+880 1XXX-XXXXXX</p>
+          </div>
+        </div>
+
+        {/* Right column */}
+        <div className="md:col-span-2 space-y-4">
+          <div className="p-5 border">
+            <div className="flex justify-between items-center mb-3">
+              <h2>My cats</h2>
+            </div>
+            <div className="grid sm:grid-cols-3 gap-3"></div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-3">
+            <button
+              onClick={() => {
+                signOut({ callbackUrl: "/" });
+              }}
+              className="flex-1 py-2 border"
+            >
+              Log out
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

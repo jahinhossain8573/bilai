@@ -24,12 +24,6 @@ export default async function App() {
             bilai.
           </h1>
         </div>
-        <input
-          type="text"
-          className="bg-[#FFFEEE] rounded-2xl p-1 w-3/5"
-          placeholder="Search"
-        />
-        {/* Search */}
         <Link
           href="Home"
           className="text-[#212922] font-poppins font-extrabold hover:text-[##080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"

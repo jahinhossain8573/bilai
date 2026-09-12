@@ -5,7 +5,7 @@ import { prisma } from "@/lib/prisma"; // adjust path if needed
 import bcrypt from "bcryptjs";
 import { z } from "zod";
 import { redirect } from "next/navigation";
-import { signIn } from "@/auth"; // your auth.ts
+import { signIn } from "@/auth"; // your auth.ts8
 
 const signUpSchema = z.object({
   name: z.string().trim().min(1, "Name is required"),

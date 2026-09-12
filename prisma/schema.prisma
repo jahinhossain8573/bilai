@@ -38,6 +38,9 @@ model User {
 
   accounts      Account[]
   sessions      Session[]
+  whatsapp         String?
+  catsOwnedInPast  Int     @default(0)
+  catsAtHome       Int     @default(0)
 }
 
 model Account {

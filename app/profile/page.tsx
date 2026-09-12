@@ -1,10 +1,21 @@
 "use client";
+import { prisma } from "@/lib/prisma";
 import { SessionProvider, useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Page() {
   const { data: session } = useSession();
+
+  // States
+  const [WhatsApp, changeWhatsApp] = useState("");
+  const [pastCats, changePastCats] = useState(0);
+  const [currentCats, changeCurrentCats] = useState(0);
+
+  // Data Fetch
+  const username = session?.user?.name;
+
   return (
     <div>
       <header className="flex justify-between items-center p-3 border">
@@ -14,19 +25,32 @@ export default function Page() {
       {/* Profile card */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 p-6 border">
         <div className="flex items-center gap-4">
-          <div className="w-20 h-20 border">{/* avatar */}</div>
           <div>
-            <h1>X X</h1>
+            <h1>{username}</h1>
           </div>
         </div>
         <div className="flex divide-x border">
           <div className="px-6 py-4 text-center">
-            <p>5</p>
-            <p>Cats owned in the past</p>
+            <input
+              value={currentCats}
+              onChange={(e) => {
+                changeCurrentCats(Number(e.target.value));
+              }}
+              type="number"
+              className="border"
+            ></input>
+            <p>Cats at home</p>
           </div>
           <div className="px-6 py-4 text-center">
-            <p>2</p>
-            <p>Cats at home</p>
+            <input
+              value={pastCats}
+              onChange={(e) => {
+                changePastCats(Number(e.target.value));
+              }}
+              type="number"
+              className="border"
+            ></input>
+            <p>Cats owned in the past</p>
           </div>
         </div>
       </div>
@@ -39,7 +63,14 @@ export default function Page() {
               <h2>Profile information</h2>
             </div>
             <p>WhatsApp:</p>
-            <p className="mb-2">+880 1XXX-XXXXXX</p>
+            <input
+              type="text"
+              value={WhatsApp}
+              onChange={(e) => {
+                changeWhatsApp(e.target.value);
+              }}
+              className="border"
+            />
           </div>
         </div>
 
@@ -53,6 +84,9 @@ export default function Page() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3">
+            <button onClick={() => {}} className="flex-1 py-2 border">
+              Save
+            </button>
             <button
               onClick={() => {
                 signOut({ callbackUrl: "/" });

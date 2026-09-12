@@ -79,22 +79,25 @@ export default function Page() {
               <h2>Profile information</h2>
             </div>
             <p>WhatsApp:</p>
-            <input
-              type="text"
-              value={WhatsApp}
-              onChange={(e) => changeWhatsApp(e.target.value)}
-              className="border"
-            />
+            <div>
+              <span>+88</span>
+              <input
+                type="text"
+                value={WhatsApp}
+                onChange={(e) => changeWhatsApp(e.target.value)}
+                className="border"
+              />
+            </div>
           </div>
         </div>
 
         <div className="md:col-span-2 space-y-4">
-          <div className="p-5 border">
+          {/*<div className="p-5 border">
             <div className="flex justify-between items-center mb-3">
               <h2>My cats</h2>
             </div>
             <div className="grid sm:grid-cols-3 gap-3"></div>
-          </div>
+          </div>*/}
 
           {error && <p className="text-red-500">{error}</p>}
 

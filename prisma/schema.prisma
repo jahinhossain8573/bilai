@@ -21,6 +21,8 @@ model Cat {
   location  String
   about     String?
   imageUrl  String?
+  parentName String
+  whatsapp String?
 
   createdAt DateTime @default(now())
 }

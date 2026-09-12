@@ -23,6 +23,8 @@ export default function Page() {
   // States for age
   const [month, changeMonth] = useState<number>(0);
   const [year, changeYear] = useState<number>(0);
+  const ageYears = Number(year) || 0;
+  const ageMonths = clamp(Number(month) || 0, 0, 11);
 
   // State for gender
   const [gender, changeGender] = useState<"male" | "female" | null>("male");
@@ -66,7 +68,7 @@ export default function Page() {
 
   return (
     <div className="min-h-screen w-full bg-[url('/Background.png')] bg-cover bg-center bg-no-repeat">
-      <header className="p-5 flex justify-center gap-x-48 items-center">
+      <header className="p-5 flex justify-between gap-x-48 items-center">
         {/* Navbar */}
         <div className="md:flex md:grid-cols-1 md:items-center">
           <Image src="/Bilai.png" width={48} height={48} alt="" />
@@ -74,12 +76,12 @@ export default function Page() {
           {/* ADD IN LOGO AND THE "BILAI" TEXT HERE */}
           <h1 className="text-2xl font-matcha-mint text-[#212922] mx-0.5">bilai.</h1>
         </div>
-        <Link href="/" className=" text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5">BACK</Link>
+        <Link href="/" className=" text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5 mx-4">BACK</Link>
       </header>
-        <div className="flex justify-center  w-[80%] mx-auto p-6 md:p-12 shadow-lg bg-gradient-to-b from-[#ffffff] to-[#fdd299] rounded-4xl my-20">
+        <div className="flex justify-center  w-[80%] mx-auto p-8 md:p-12 shadow-lg bg-gradient-to-b from-[#ffffff] to-[#fdd299] rounded-4xl my-20">
         <div className="">
          <div className=" text-center">
-          <h2 className="text-xl xl:text-5xl font-poppins font-extrabold my-1">Cat for Adoption</h2>
+          <h2 className="text-xl xl:text-5xl font-poppins font-bold my-0.5">Cat for Adoption</h2>
           <span className="my-4">Help adopters know about your cat</span>
         </div>
           {/* Container for the stuff on the left */}
@@ -87,7 +89,7 @@ export default function Page() {
             <span className={spanStyling}>Name</span>
             <input
               type="text"
-              className="border rounded-2xl"
+              className="bg-[#fffeee] border border-black w-full rounded-md h-8 "
               onChange={(e) => {
                 changeName(e.target.value);
                 // console.log(name);
@@ -98,7 +100,7 @@ export default function Page() {
             <span className={spanStyling}>Breed</span>
             <input
               type="text"
-              className="border rounded-2xl"
+              className="bg-[#fffeee] border border-black w-full h-8 rounded-md"
               onChange={(e) => {
                 changeBreed(e.target.value);
                 // console.log(breed);
@@ -107,7 +109,8 @@ export default function Page() {
           </div>
           <div className={inputGroupStyling}>
             <span className={spanStyling}>Age</span>
-            <div className="flex">
+            <div className="flex justify-between items-start">
+              <p className="font-poppins font-bold my-1">Year :
               <input
                 onChange={(e) => {
                   changeYear(Number(e.target.value));
@@ -116,8 +119,10 @@ export default function Page() {
                 type="number"
                 value={year}
                 placeholder="YY"
-                className="border rounded-2xl w-10"
+                className="bg-[#fffeee] border border-black w-12 rounded-md h-8 mx-1"
               />
+              </p>
+              <p className="font-poppins font-bold my-1">Month :
               <input
                 onChange={(e) => {
                   changeMonth(clamp(Number(e.target.value), 0, 11));
@@ -126,15 +131,16 @@ export default function Page() {
                 value={month}
                 type="number"
                 placeholder="MM"
-                className="border rounded-2xl w-10"
+                className="bg-[#fffeee] border border-black w-12 rounded-md h-8 mx-2"
               />
+              </p>
             </div>
           </div>
           <div className={inputGroupStyling}>
             <span className={spanStyling}>Location</span>
             <input
               type="text"
-              className="border rounded-2xl"
+              className="bg-[#fffeee] border border-black w-full rounded-md h-8"
               onChange={(e) => {
                 changeLocation(e.target.value);
                 // console.log(location);
@@ -164,7 +170,7 @@ export default function Page() {
               <span>Female</span>
             </div>
           </div>
-          <div className="flex flex-col border rounded-2xl p-3">
+          <div className="flex flex-col border rounded-2xl p-3 bg-[#fffeee] my-2 h-30">
             <span className={spanStyling}>Photo</span>
             <input
               type="file"
@@ -188,17 +194,6 @@ export default function Page() {
                 height={500}
               ></Image>
             )}
-          </div>
-          <div className="flex flex-col">
-            <span className={spanStyling}>About your cat</span>
-            <textarea
-              onChange={(e) => {
-                changeAboutCat(e.target.value);
-                // console.log(aboutCat);
-              }}
-              value={aboutCat}
-              className="border rounded-2xl"
-            />
           </div>
         </div>
         <div className=" text-flex flex-col items-center gap-2">

@@ -82,7 +82,7 @@ export default function Page() {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
-              className=" bg-[#fffeee00] border border-black w-full h-8 rounded-md"
+              className=" bg-[#fffeee] border border-black w-full h-8 rounded-md"
             />
             <label
               htmlFor="password"
@@ -98,7 +98,7 @@ export default function Page() {
                 setPassword(e.target.value);
               }}
               placeholder=" *******"
-              className=" bg-[#fffeee00] border border-black w-full rounded-md h-8"
+              className=" bg-[#fffeee] border border-black w-full rounded-md h-8"
             />
             <p className="">
               Don&apos;t have an account?{""}

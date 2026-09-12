@@ -65,21 +65,23 @@ export default function Page() {
   }
 
   return (
-    <div>
+    <div className="min-h-screen w-full bg-[url('/Background.png')] bg-cover bg-center bg-no-repeat">
       <header className="p-5 flex justify-center gap-x-48 items-center">
         {/* Navbar */}
-        <div>
+        <div className="md:flex md:grid-cols-1 md:items-center">
+          <Image src="/Bilai.png" width={48} height={48} alt="" />
+        
           {/* ADD IN LOGO AND THE "BILAI" TEXT HERE */}
-          <h1>BILAI</h1>
+          <h1 className="text-2xl font-matcha-mint text-[#212922] mx-0.5">bilai.</h1>
         </div>
         <div className=" text-center">
-          <h2 className="text-2xl font-bold">Cat for Adoption</h2>
-          <span>Help adopters find the cat</span>
+          <h2 className="text-xl xl:text-5xl font-poppins font-extrabold my-1">Cat for Adoption</h2>
+          <span className="my-4">Help adopters find the cat</span>
         </div>
-        <Link href="/">BACK</Link>
+        <Link href="/" className=" text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5">BACK</Link>
       </header>
-      <div className="flex justify-center">
-        <div className="flex flex-col gap-2">
+        <div className="w-full sm:w-full max-w-md mx-auto p-6 md:p-12 shadow-lg bg-gradient-to-b from-[#ffffff] to-[#bad69a] rounded-4xl my-20">
+        <div className="">
           {/* Container for the stuff on the left */}
           <div className={inputGroupStyling}>
             <span className={spanStyling}>Name</span>
@@ -138,18 +140,6 @@ export default function Page() {
                 // console.log(location);
               }}
             />
-          </div>
-          <button
-            onClick={saveProfile}
-            className="bg-green-400 p-2 rounded-2xl hover:cursor-pointer hover:bg-green-500"
-          >
-            Save Cat Profile
-          </button>
-          <span className="text-zinc-500">
-            You can edit these details later
-          </span>
-        </div>
-        <div>
           {/* Container for the stuff on the right */}
           <div>
             <span className={spanStyling}>Gender</span>
@@ -210,6 +200,17 @@ export default function Page() {
               className="border rounded-2xl"
             />
           </div>
+        </div>
+        <div>
+          <button
+            onClick={saveProfile}
+            className="bg-green-400 p-2 rounded-2xl hover:cursor-pointer hover:bg-green-500 font-extrabold my-2 flex justify-center items-center w-full" >
+            Save Cat Profile
+          </button>
+          <span className="text-zinc-500 font-poppins font-bold flex justify-center items-center w-full">
+            You can edit these details later
+          </span>
+        </div>
         </div>
       </div>
     </div>

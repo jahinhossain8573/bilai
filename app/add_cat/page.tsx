@@ -27,23 +27,25 @@ export default function Page() {
   const ageMonths = clamp(Number(month) || 0, 0, 11);
 
   // State for gender
-  const [gender, changeGender] = useState<"male" | "female" | null>("male");
+  const [gender, changeGender] = useState<"MALE" | "FEMALE">("MALE");
 
   // States for photo
   const [image, changeImage] = useState<File | null>(null);
   const [imagePreview, changeImagePreview] = useState<string | null>(null);
 
   async function saveProfile() {
+    const selectedGender = gender ?? "MALE";
+
     await addCatToDB({
       name,
       breed,
       ageMonths: year * 12 + month,
-      gender: gender.toUpperCase() as "MALE" | "FEMALE",
+      gender: selectedGender,
       location,
       about: aboutCat,
       imageUrl: image
         ? await fileToCompressedBase64(image, 400)
-        : placeholderCatPhoto,
+        : placeholderCatPhoto.src,
     });
 
     router.push("/");
@@ -154,7 +156,7 @@ export default function Page() {
                 name="gender"
                 type="radio"
                 onChange={() => {
-                  changeGender("male");
+                  changeGender("MALE");
                   // console.log(gender);
                 }}
               />
@@ -163,7 +165,7 @@ export default function Page() {
                 name="gender"
                 type="radio"
                 onChange={() => {
-                  changeGender("female");
+                  changeGender("FEMALE");
                   // console.log(gender);
                 }}
               />

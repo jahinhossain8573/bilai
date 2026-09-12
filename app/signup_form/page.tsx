@@ -114,7 +114,14 @@ export default function Page() {
               placeholder=" ********"
               className="bg-[#fffeee00] border border-black w-full rounded-md h-8"
             />
-            <Link href="/login_form">Already have an account? Sign in</Link>
+            <p>
+              Already have an account?
+            <Link 
+            href="/login_form" 
+            className="mx-0.5 font-poppins font-medium text-[#080808] hover:underline"> 
+            Log in
+            </Link>
+            </p>
             <button
               type="submit"
               disabled={loading}

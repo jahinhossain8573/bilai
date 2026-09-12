@@ -109,7 +109,7 @@ export default function Page() {
                 Sign up
               </Link>
             </p>
-            <div className="flex justify-center items-center">
+            <div className="flex flex-col items-center gap-2">
               <button
                 onClick={login}
                 className="mt-5 font-poppins font-bold text-2xl border-2 border-[#FA7D1F] bg-[#FA7D1F] rounded-xl py-1 w-full hover:bg-[#ffb175] hover:text-[#ffffff]"
@@ -117,7 +117,8 @@ export default function Page() {
                 {" "}
                 LOGIN{" "}
               </button>
-              <span>{error}</span>
+              <span
+              className="font-poppins font-bold text-[#FA7D1F] flex justify-center items-center">{error}</span>
             </div>
           </div>
         </div>

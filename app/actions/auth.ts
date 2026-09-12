@@ -4,13 +4,16 @@
 import { prisma } from "@/lib/prisma"; // adjust path if needed
 import bcrypt from "bcryptjs";
 import { z } from "zod";
-import { redirect } from "next/navigation";
 import { signIn } from "@/auth"; // your auth.ts8
 
 const signUpSchema = z.object({
   name: z.string().trim().min(1, "Name is required"),
   email: z.string().email("Invalid email"),
   password: z.string().min(6, "Password must be at least 6 characters"),
+  whatsapp: z
+    .string()
+    .trim()
+    .regex(/^01\d{9}$/, "Enter an 11-digit number starting with 01"),
 });
 
 export async function signUp(formData: FormData) {
@@ -18,15 +21,16 @@ export async function signUp(formData: FormData) {
     name: formData.get("name"),
     email: formData.get("email"),
     password: formData.get("password"),
+    whatsapp: formData.get("whatsapp"),
   };
 
   const parsed = signUpSchema.safeParse(raw);
 
   if (!parsed.success) {
-    return { error: parsed.error.errors[0].message };
+    return { error: parsed.error.issues[0].message };
   }
 
-  const { name, email, password } = parsed.data;
+  const { name, email, password, whatsapp } = parsed.data;
 
   // Check if user already exists
   const existingUser = await prisma.user.findUnique({
@@ -46,6 +50,7 @@ export async function signUp(formData: FormData) {
       name,
       email,
       password: hashedPassword,
+      whatsapp,
     },
   });
 

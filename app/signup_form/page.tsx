@@ -8,6 +8,7 @@ export default function Page() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -20,6 +21,7 @@ export default function Page() {
     formData.append("name", name);
     formData.append("email", email);
     formData.append("password", password);
+    formData.append("whatsapp", whatsapp);
 
     const result = await signUp(formData);
 
@@ -100,6 +102,30 @@ export default function Page() {
               placeholder=" yourexample@gmail.com"
               className=" bg-[#fffeee00] border border-black w-full rounded-md h-8"
             />
+
+            <label
+              htmlFor="whatsapp"
+              className="block text-base mb-2 my-5 font-poppins font-bold"
+            >
+              WhatsApp:
+            </label>
+            <div className="flex items-center">
+              <span className="mr-1 text-2xl">+88</span>
+              <input
+                type="tel"
+                id="whatsapp"
+                value={whatsapp}
+                onChange={(e) => setWhatsapp(e.target.value)}
+                placeholder="01xxxxxxxxx"
+                inputMode="numeric"
+                maxLength={11}
+                pattern="01[0-9]{9}"
+                title="Enter an 11-digit number starting with 01"
+                className="bg-[#fffeee00] border border-black w-full rounded-md h-8"
+                required
+              />
+            </div>
+
             <label
               htmlFor="password"
               className="block text-base mb-2 my-5 font-poppins font-bold"
@@ -131,10 +157,6 @@ export default function Page() {
               {loading ? "Creating account..." : "Sign Up"}
             </button>
           </form>
-          <span>
-            Do not forget to add your WhatsApp number in your profile once you
-            are done
-          </span>
         </div>
       </div>
     </div>

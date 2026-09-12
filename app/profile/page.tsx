@@ -2,6 +2,7 @@
 import { useSession, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { getCurrentUser, updateProfile } from "@/app/actions/user";
+import Link from "next/link";
 
 export default function Page() {
   const { data: session } = useSession();
@@ -41,7 +42,12 @@ export default function Page() {
   return (
     <div>
       <header className="flex justify-between items-center p-3 border">
-        <div>bilai</div>
+        <div>
+          <span>bilai</span>
+        </div>
+        <div>
+          <Link href="/">Back</Link>
+        </div>
       </header>
 
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 p-6 border">

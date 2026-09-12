@@ -23,6 +23,8 @@ export default function Page() {
   // States for age
   const [month, changeMonth] = useState<number>(0);
   const [year, changeYear] = useState<number>(0);
+  const ageYears = Number(year) || 0;
+  const ageMonths = clamp(Number(month) || 0, 0, 11);
 
   // State for gender
   const [gender, changeGender] = useState<"male" | "female" | null>("male");
@@ -87,7 +89,7 @@ export default function Page() {
             <span className={spanStyling}>Name</span>
             <input
               type="text"
-              className="border rounded-xl"
+              className="bg-[#fffeee] border border-black w-full rounded-md h-8 "
               onChange={(e) => {
                 changeName(e.target.value);
                 // console.log(name);
@@ -107,7 +109,8 @@ export default function Page() {
           </div>
           <div className={inputGroupStyling}>
             <span className={spanStyling}>Age</span>
-            <div className="flex">
+            <div className="flex justify-between items-start">
+              <p className="font-poppins font-bold my-1">Year :
               <input
                 onChange={(e) => {
                   changeYear(Number(e.target.value));
@@ -116,8 +119,10 @@ export default function Page() {
                 type="number"
                 value={year}
                 placeholder="YY"
-                className="bg-[#fffeee] border border-black w-10 rounded-md h-8"
+                className="bg-[#fffeee] border border-black w-12 rounded-md h-8 mx-1"
               />
+              </p>
+              <p className="font-poppins font-bold my-1">Month :
               <input
                 onChange={(e) => {
                   changeMonth(clamp(Number(e.target.value), 0, 11));
@@ -126,8 +131,9 @@ export default function Page() {
                 value={month}
                 type="number"
                 placeholder="MM"
-                className="bg-[#fffeee] border border-black w-10 rounded-md h-8 mx-2"
+                className="bg-[#fffeee] border border-black w-12 rounded-md h-8 mx-2"
               />
+              </p>
             </div>
           </div>
           <div className={inputGroupStyling}>
@@ -188,17 +194,6 @@ export default function Page() {
                 height={500}
               ></Image>
             )}
-          </div>
-          <div className="flex flex-col">
-            <span className={spanStyling}>About your cat</span>
-            <textarea
-              onChange={(e) => {
-                changeAboutCat(e.target.value);
-                // console.log(aboutCat);
-              }}
-              value={aboutCat}
-              className="border rounded-2xl"
-            />
           </div>
         </div>
         <div className=" text-flex flex-col items-center gap-2">

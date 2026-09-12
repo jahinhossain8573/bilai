@@ -94,6 +94,7 @@ export default async function App() {
               <Card
                 catInput={e}
                 canDelete={session?.user?.id === e.userId}
+                showWhatsApp={session?.user?.id !== e.userId}
               />
             </div>
           ))}

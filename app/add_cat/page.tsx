@@ -32,23 +32,34 @@ export default function Page() {
   // States for photo
   const [image, changeImage] = useState<File | null>(null);
   const [imagePreview, changeImagePreview] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
 
   async function saveProfile() {
-    const selectedGender = gender ?? "MALE";
+    if (saving) return;
 
-    await addCatToDB({
-      name,
-      breed,
-      ageMonths: year * 12 + month,
-      gender: selectedGender,
-      location,
-      about: aboutCat,
-      imageUrl: image
-        ? await fileToCompressedBase64(image, 400)
-        : placeholderCatPhoto.src,
-    });
+    setSaving(true);
+    try {
+      const selectedGender = gender ?? "MALE";
 
-    router.push("/");
+      await addCatToDB({
+        name,
+        breed,
+        ageMonths: year * 12 + month,
+        gender: selectedGender,
+        location,
+        about: aboutCat,
+        imageUrl: image
+          ? await fileToCompressedBase64(image, 400)
+          : placeholderCatPhoto.src,
+      });
+
+      router.push("/");
+    } catch (error) {
+      setSaving(false);
+      window.alert(
+        error instanceof Error ? error.message : "Unable to save cat profile.",
+      );
+    }
   }
 
   function fileToCompressedBase64(file: File, maxWidth = 800): Promise<string> {
@@ -203,8 +214,10 @@ export default function Page() {
         <div className=" text-flex flex-col items-center gap-2">
           <button
             onClick={saveProfile}
-            className="w-full bg-[#0ce743] hover:bg-[#7cae4c] transition-colors text-[#060706] font-extrabold py-3 rounded-2xl text-center my-2" >
-            Save Cat Profile
+            disabled={saving}
+            className="w-full bg-[#0ce743] hover:bg-[#7cae4c] transition-colors text-[#060706] font-extrabold py-3 rounded-2xl text-center my-2 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {saving ? "Saving..." : "Save Cat Profile"}
           </button>
           <span className="text-zinc-700 font-poppins font-normal text-xs flex justify-center items-center w-full">
             You can edit these details later

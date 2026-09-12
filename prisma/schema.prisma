@@ -21,6 +21,7 @@ model Cat {
   location  String
   about     String?
   imageUrl  String?
+  parentName String
 
   createdAt DateTime @default(now())
 }

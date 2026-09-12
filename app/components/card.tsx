@@ -21,7 +21,13 @@ export default function Card({ catInput }: { catInput: CreateCatInput }) {
 
       <div className="px-2">
         {/* Text inside the card */}
-        <h2 className=" text-lg font-bold text-[#212922]">{catInput.name}</h2>
+        <div className="flex justify-between">
+          <span className=" text-lg font-bold text-[#212922]">
+            {catInput.name}
+          </span>
+          <span>Parent: {catInput.parentName}</span>
+        </div>
+
         {/* Line 1 — Cat Name */}
         <ul className="flex gap-1.5 ">
           {" "}

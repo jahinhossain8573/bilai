@@ -89,12 +89,12 @@ export default function Page() {
         </div>
 
         <div className="md:col-span-2 space-y-4">
-          <div className="p-5 border">
+          {/*<div className="p-5 border">
             <div className="flex justify-between items-center mb-3">
               <h2>My cats</h2>
             </div>
             <div className="grid sm:grid-cols-3 gap-3"></div>
-          </div>
+          </div>*/}
 
           {error && <p className="text-red-500">{error}</p>}
 

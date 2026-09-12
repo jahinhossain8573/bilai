@@ -8,8 +8,8 @@ import { addCatToDB } from "@/app/actions/cats";
 import { clamp } from "lodash";
 import { useState } from "react";
 
-const spanStyling: string = "font-bold "; // Controls styling for the input titles
-const inputGroupStyling: string = "flex flex-col w-3/4"; // Controls styling for the stuff on the left
+const spanStyling: string = "font-bold text-sm sm:text-base "; // Controls styling for the input titles
+const inputGroupStyling: string = "font-poppins font-bold mx-1 my-2 sm:my-3 flex flex-col gap-1 w-full"; // Controls styling for the stuff on the left
 
 export default function Page() {
   const router = useRouter();
@@ -80,11 +80,11 @@ export default function Page() {
         </div>
         <Link href="/" className=" text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5 mx-4">BACK</Link>
       </header>
-        <div className="flex justify-center  w-[80%] mx-auto p-8 md:p-12 shadow-lg bg-gradient-to-b from-[#ffffff] to-[#fdd299] rounded-4xl my-20">
+        <div className="flex justify-center  w-[60%] mx-auto p-8 md:p-12 shadow-lg bg-gradient-to-b from-[#ffffff] to-[#fdd299] rounded-4xl my-10">
         <div className="">
-         <div className=" text-center">
+         <div className=" text-center ">
           <h2 className="text-xl xl:text-5xl font-poppins font-bold my-0.5">Cat for Adoption</h2>
-          <span className="my-4">Help adopters know about your cat</span>
+          <span className="text-poppins font-normal text-sm xl:text-lg my-4">Help adopters know about your cat</span>
         </div>
           {/* Container for the stuff on the left */}
           <div className={inputGroupStyling}>

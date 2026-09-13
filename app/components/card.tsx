@@ -55,12 +55,13 @@ export default function Card({
 
       <div className="px-2">
         {/* Text inside the card */}
-        <div className="flex justify-between">
+        <div className="flex justify-between gap-4">
           <span className=" text-lg font-bold text-[#212922]">
             {catInput.name}
           </span>
           <span>Parent: {catInput.parentName}</span>
         </div>
+        
 
         {/* Line 1 — Cat Name */}
         <ul className="flex gap-1.5 ">

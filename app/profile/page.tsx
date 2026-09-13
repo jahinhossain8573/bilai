@@ -63,12 +63,7 @@ export default function Page() {
         </Link>
       </header>
 
-      <div className=" bg-[#FA7D1f] w-full flex flex-col md:flex-row md:items-center md:justify-between gap-6 p-6 border">
-        <div className="flex items-center gap-4">
-          <div>
-            <h1 className="font-matcha-mint">{username}</h1>
-          </div>
-        </div>
+        
         {/*<div className="flex divide-x border">
           <div className="px-6 py-4 text-center">
             <input
@@ -89,24 +84,27 @@ export default function Page() {
             <p>Cats owned in the past</p>
           </div>
         </div>*/}
-      </div>
+
 
       <div className="max-w-md mx-auto flex flex-col gap-4">
-        <div className="w-[90%] sm:w-full max-w-md p-6 md:p-12 shadow-2xl bg-[#FA7D1F] rounded-xl my-10 mx-auto">
+        <div className="w-[90%] sm:w-full max-w-md p-6 md:p-12 shadow-2xl bg-gradient-to-b from-[#ffefc9] to-[#ffb882] rounded-xl my-10 mx-auto">
           <div className="p-3">
             <div className=" justify-between items-center mb-3">
-              <h2 className="font-poppins font-bold text-3xl text-amber-50 flex justify-center">
+              <h2 className="font-poppins font-bold text-2xl text-amber-50 flex justify-center items-center bg-[#FA7D1F] w-auto h-12 rounded-xl">
                 Profile information
               </h2>
             </div>
-            <p className=" font-bold text-xl text-amber-50">WhatsApp:</p>
-            <div className="my-5 flex items-center">
+            <div>
+              <h1 className="font-poppins font-bold text-xl text-[#080808] flex justify-center my-5">{username}</h1>
+            </div>
+            <p className=" font-bold text-xl text-[#0808080]">WhatsApp:</p>
+            <div className="my-3 flex items-center">
               <span className="font-bold">+88</span>
               <input
                 type="text"
                 value={WhatsApp}
                 onChange={(e) => changeWhatsApp(e.target.value)}
-                className="border w-full h-10 border-amber-50 mx-1 rounded-xl"
+                className="border-2 w-full h-10 border-[#080808] mx-1 rounded-xl p-2"
               />
             </div>
           </div>
@@ -147,13 +145,13 @@ export default function Page() {
                 <button
                   onClick={handleSave}
                   disabled={saving || !loaded}
-                  className="w-full bg-[#0ce743] hover:bg-[#7cae4c] transition-colors text-[#060706] font-extrabold py-3 rounded-2xl text-center my-2"
+                  className="w-full bg-[#1cc847] hover:bg-[#567936] transition-colors text-[#e8f8e8] text-xl font-bold py-3 rounded-2xl text-center my-2"
                 >
                   {saving ? "Saving..." : "Save"}
                 </button>
                 <button
                   onClick={() => signOut({ callbackUrl: "/" })}
-                  className="w-full bg-[#0ce743] hover:bg-[#7cae4c] transition-colors text-[#060706] font-extrabold py-3 rounded-2xl text-center my-2"
+                  className="w-full bg-[#1cc847] hover:bg-[#567936] transition-colors text-[#e8f8e8] text-xl font-bold py-3 rounded-2xl text-center my-2"
                 >
                   Log out
                 </button>

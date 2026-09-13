@@ -8,7 +8,7 @@ Bilai is an app that aims to connect the adopters and pet parents in the burgeon
 - **Put cats up for adoption:** A simple form on which owners can submit a picture of their pet, age, breed, and location.
 - **WhatsApp Connection:** Each card features a single button that opens a WhatsApp conversation with the owner instantly. We chose WhatsApp because of the platform's widespread adoption in the country.
 
-## Tech stack
+## Tech Stack
 
 - Next.js 16 (App Router)
 - React 19 + TypeScript
@@ -17,7 +17,7 @@ Bilai is an app that aims to connect the adopters and pet parents in the burgeon
 - NextAuth credentials authentication
 - bcryptjs for password hashing
 
-## Project structure
+## Project Structure
 
 - `app/` — pages, components, and route logic for the UI
 - `app/actions/` — server actions for sign-up, cat creation, and deletion
@@ -26,7 +26,7 @@ Bilai is an app that aims to connect the adopters and pet parents in the burgeon
 - `prisma/` — Prisma schema and migrations
 - `public/` and `app/resources/` — static assets and app media
 
-# Getting started
+# Getting Started
 
 1. Clone the repository.
 2. Install dependencies:
@@ -66,7 +66,7 @@ If you are working from a fresh local database, you can also use `npx prisma mig
 
 7. Open the app in your browser at `http://localhost:3000`.
 
-## Database schema
+## Database Schema
 
 The app stores user and cat records in PostgreSQL via Prisma. Key models include:
 

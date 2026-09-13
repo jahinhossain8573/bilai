@@ -99,7 +99,7 @@ export default function Page() {
           BACK
         </Link>
       </header>
-        <div className="flex justify-center  w-[70%] xl:w-[40%] mx-auto p-5 md:p-12 shadow-lg bg-gradient-to-b from-[#ffffff] to-[#fdd299] rounded-4xl my-5">
+      <div className="flex justify-center  w-[70%] xl:w-[40%] mx-auto p-5 md:p-12 shadow-lg bg-gradient-to-b from-[#ffffff] to-[#fdd299] rounded-4xl my-5">
         <div className="">
           <div className=" text-center ">
             <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold">
@@ -173,70 +173,65 @@ export default function Page() {
                 // console.log(location);
               }}
             />
-          {/* Container for the stuff on the right */}
-          <div>
-            <span className={spanStyling}>Gender</span>
-            <div className="">
+            {/* Container for the stuff on the right */}
+            <div>
+              <span className={spanStyling}>Gender</span>
+              <div className="">
+                <input
+                  name="gender"
+                  type="radio"
+                  onChange={() => {
+                    changeGender("MALE");
+                    // console.log(gender);
+                  }}
+                />
+                <span className="mx-2">Male</span>
+                <input
+                  name="gender"
+                  type="radio"
+                  onChange={() => {
+                    changeGender("FEMALE");
+                    // console.log(gender);
+                  }}
+                />
+                <span className="mx-2">Female</span>
+              </div>
+            </div>
+            <div className="flex flex-col border rounded-2xl p-3 bg-[#fffeee] my-2 h-30">
+              <span className={spanStyling}>Photo</span>
               <input
-                name="gender"
-                type="radio"
-                onChange={() => {
-                  changeGender("MALE");
-                  // console.log(gender);
-                  
+                type="file"
+                name=""
+                id=""
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (!file) {
+                    return;
+                  }
+                  changeImage(file);
+                  changeImagePreview(URL.createObjectURL(file));
                 }}
-                
+                className=" w-50 rounded-md h-8 xl:w-full"
               />
-              <span className="mx-2">Male</span>
-              <input
-                name="gender"
-                type="radio"
-                onChange={() => {
-                  changeGender("FEMALE");
-                  // console.log(gender);
-                }}
-              />
-              <span className="mx-2">Female</span>
+              {imagePreview && (
+                <Image
+                  src={String(imagePreview)}
+                  alt=""
+                  width={500}
+                  height={500}
+                ></Image>
+              )}
             </div>
           </div>
-          <div className="flex flex-col border rounded-2xl p-3 bg-[#fffeee] my-2 h-30">
-            <span className={spanStyling}>Photo</span>
-            <input
-              type="file"
-              name=""
-              id=""
-              onChange={(e) => {
-                const file = e.target.files?.[0];
-                if (!file) {
-                  return;
-                }
-                changeImage(file);
-                changeImagePreview(URL.createObjectURL(file));
-              }}
-              className=" w-50 rounded-md h-8 xl:w-full"
-            />
-            {imagePreview && (
-              <Image
-                src={String(imagePreview)}
-                alt=""
-                width={500}
-                height={500}
-              ></Image>
-            )}
+          <div className=" text-flex flex-col items-center gap-2">
+            <button
+              onClick={saveProfile}
+              disabled={saving}
+              className="w-full bg-[#0ce743] hover:bg-[#7cae4c] transition-colors text-[#060706] font-extrabold py-3 rounded-2xl text-center my-2 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {saving ? "Saving..." : "Save Cat Profile"}
+            </button>
           </div>
-        </div>
-        <div className=" text-flex flex-col items-center gap-2">
-          <button
-            onClick={saveProfile}
-            disabled={saving}
-            className="w-full bg-[#0ce743] hover:bg-[#7cae4c] transition-colors text-[#060706] font-extrabold py-3 rounded-2xl text-center my-2 disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            {saving ? "Saving..." : "Save Cat Profile"}
-          </button>
-          <span className="text-zinc-700 font-poppins font-normal text-xs flex justify-center items-center w-full">
-            You can edit these details later
-          </span>
-        </div>
         </div>
       </div>
     </div>

@@ -51,7 +51,7 @@ export default function Card({
         width={300}
         height={200}
         alt=""
-        className="rounded-t-2xl object-cover w-70 p-2 aspect-video"
+        className="rounded-t-2xl object-cover p-2 aspect-video relative w-full h-48 overflow-hidden"
       />
       {/* Cat Image */}
 

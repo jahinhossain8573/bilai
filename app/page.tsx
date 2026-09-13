@@ -15,7 +15,7 @@ export default async function App() {
   const catData = await getData();
   return (
     <div className="bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center w-full h-full min-h-screen">
-      <header className=" bg-[#f0eec9] p-1.5  flex justify-center gap-2 items-center ">
+      <header className=" bg-[#f0eec9] p-1.5  flex justify-between gap-2 items-center">
         {/* Navbar */}
         <div className="bg-[#f0eec9] rounded-xl p-1 md:flex md:grid-cols-1 md:items-center">
           <Image src="/Bilai.png" width={32} height={32} alt="" />
@@ -24,26 +24,21 @@ export default async function App() {
             bilai.
           </h1>
         </div>
-        <Link
-          href="Home"
-          className="text-[#212922] font-poppins font-extrabold hover:text-[##080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
-        >
-          Home
-        </Link>
+
         {session === null ? (
           <div>
             <Link
               href={"/login_form"}
               className="md:hidden text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
             >
-              <span>+Cat</span>
+              <span >+ List Cat</span>
             </Link>
             <Link
               href="/login_form"
               className="hidden md:block text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5 whitespace-nowrap"
             >
-              <span className="hidden lg:inline">+Cat</span>
-              <span className="lg:hidden">+Cat</span>
+              <span className="hidden lg:inline">+ List Cat</span>
+              <span className="lg:hidden">+ List Cat</span>
             </Link>
           </div>
         ) : (
@@ -52,16 +47,16 @@ export default async function App() {
               href={"/add_cat"}
               className="md:hidden text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
             >
-              <span>+Cat</span>
+              <span>+ List Cat</span>
             </Link>
             <Link
               href="/add_cat"
               className="hidden md:block text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5 whitespace-nowrap"
             >
-              <span className="hidden lg:inline">+Cat</span>
-              <span className="lg:hidden">+Cat</span>
+              <span className="hidden lg:inline">+ List Cat</span>
+              <span className="lg:hidden">+ List Cat</span>
             </Link>
-          </div>
+           </div>
         )}
 
         <div>
@@ -76,8 +71,9 @@ export default async function App() {
           ) : (
             <Link
               href="/profile"
-              className="text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
+              className="text-[#212922] font-poppins font-extrabold flex items-center hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
             >
+              <Image src="/profile.png" width={32} height={32} alt="" />
               <span>Profile</span>
             </Link>
           )}

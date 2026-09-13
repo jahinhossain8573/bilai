@@ -1,96 +1,81 @@
-# Animal Hack 2026
+# Bilai
 
-A collaborative project created for **Animal Hack 2026**.
-
-## Overview
-
-**"bilai."** ("cat" in Bengali) is Bangladesh's first structured cat adoption platform.
-
-The platform serves two audiences: adopters in Bangladesh searching for a cat, and owners or shelters looking to place a cat in a new home.
-
-Users can put cats up for adoption by creating cards with relevant information.
-
-Adopters can contact cat parents on WhatsApp.
+Bilai is an app that aims to connect the adopters and pet parents in the burgeoning cat adoption landscape in Bangladesh. We want Bilai to make the cat adoption landscape in Bangladesh more streamlined and easier to navigate.
 
 ## Features
 
-- **Browsable cat cards** - a grid of adoptable cats with photo, breed, age, and location
-- **WhatsApp-first contact** - every card includes a direct "Contact on WhatsApp" action, removing the need for an in-app messaging system
-- **Responsive layout** - for desktop and mobile
-- Responsive interface for desktop and mobile devices
+- **Explore pets to adopt:** A clean grid of cards with pets available for adoption.
+- **Put cats up for adoption:** A simple form on which owners can submit a picture of their pet, age, breed, and location.
+- **WhatsApp Connection:** Each card features a single button that opens a WhatsApp conversation with the owner instantly. We chose WhatsApp because of the platform's widespread adoption in the country.
 
-## Tech Stack
+## Tech stack
 
-- **Frontend:** Next.js, ReactJS
-- **Database:** PostgreSQL
-- **ORM:** Prisma
-- **Styling:** Tailwind CSS
-- **Authentication:** NextAuth
-- **Deployment:** Vercel
+- Next.js 16 (App Router)
+- React 19 + TypeScript
+- Tailwind CSS
+- Prisma ORM with PostgreSQL
+- NextAuth credentials authentication
+- bcryptjs for password hashing
 
-## Getting Started
+## Project structure
 
-### Prerequisites
+- `app/` — pages, components, and route logic for the UI
+- `app/actions/` — server actions for sign-up, cat creation, and deletion
+- `app/components/` — reusable UI components such as the cat cards
+- `lib/` — shared database client setup
+- `prisma/` — Prisma schema and migrations
+- `public/` and `app/resources/` — static assets and app media
 
-Make sure you have the following installed:
+# Getting started
 
-- [Node.js](https://nodejs.org/)
-- npm or pnpm
-
-### Try out using Vercel
-
-Live demo: [bilai on Vercel](https://bilai-git-final-gator2.vercel.app)
-
-## Project Structure
-
-```text
-.
-├── app/                  # Application routes and pages
-├── components/           # Reusable UI components
-├── lib/                  # Shared utilities and service clients
-├── prisma/               # Database schema and migrations
-├── public/                # Static assets
-├── .env.example          # Environment variable template
-└── package.json          # Project configuration and scripts
-```
-
-### Installation
-
-1. Clone the repository and install dependencies:
+1. Clone the repository.
+2. Install dependencies:
 
 ```bash
-   git clone https://github.com/jahinhossain8573/animal-hack-2026.git
-   cd animal-hack-2026
    pnpm install
 ```
 
-2. Copy `.env.example` to `.env` and fill in the required values:
+3. Create your environment file from the example:
 
 ```bash
    cp .env.example .env
 ```
 
-You'll need a PostgreSQL connection string (`DATABASE_URL`), an `AUTH_SECRET` (generate one with `npx auth secret`), and your Supabase keys if image upload is enabled.
+4. Add your PostgreSQL connection string and auth secrets in `.env`:
 
-3. Push the schema to your database and generate the Prisma client:
-
-```bash
-   npx prisma db push
-   npx prisma generate
+```env
+   DATABASE_URL="postgresql://user:password@localhost:5432/animal_hack"
+   AUTH_SECRET="replace-with-a-long-random-secret"
+   AUTH_URL="http://localhost:3000"
 ```
 
-4. Run the development server:
+5. Generate the Prisma client and prepare the database:
+
+```bash
+   npx prisma generate
+   npx prisma db push
+```
+
+If you are working from a fresh local database, you can also use `npx prisma migrate dev` for project migrations.
+
+6. Start the app:
 
 ```bash
    pnpm dev
 ```
 
-The app will be available at [http://localhost:3000](http://localhost:3000).
+7. Open the app in your browser at `http://localhost:3000`.
 
-## Team
+## Database schema
 
-Built for **Animal Hack 2026** by:
+The app stores user and cat records in PostgreSQL via Prisma. Key models include:
 
-1. Md. Jahin Hossain
-2. Abdullah Irshad Tazwar
-3. Nadid Bin Sadat
+- `User` — account info, email, password, WhatsApp, and ownership metadata
+- `Cat` — cat name, breed, age, gender, location, photo, and owner reference
+- `Account`, `Session`, and `VerificationToken` — authentication tables used by NextAuth
+
+## Notes
+
+- The project is set up for deployment on Vercel and expects `DATABASE_URL` and auth environment variables to be configured in the hosting environment.
+- The `app/actions/cats.ts` server action ensures a user can only delete cards that they created.
+- The app uses a custom local font and a warm, earthy visual style to match the cat-adoption theme.

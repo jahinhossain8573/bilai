@@ -46,12 +46,12 @@ export default function Page() {
 
   return (
     <div className="bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center w-full h-full min-h-screen">
-      <header className="p-5 flex justify-between gap-x-48 items-center">
+      <header className=" bg-[#f0eec9] p-1.5  flex justify-between gap-2 items-center">
         {/* Navbar */}
-        <div className="md:flex md:grid-cols-1 md:items-center">
-          <Image src="/Bilai.png" width={48} height={48} alt="" />
-
-          <h1 className="text-2xl font-matcha-mint text-[#212922] mx-0.5">
+        <div className="bg-[#f0eec9] rounded-xl p-1 md:flex md:grid-cols-1 md:items-center">
+          <Image src="/Bilai.png" width={32} height={32} alt="" />
+          {/* ADD IN LOGO AND THE "BILAI" TEXT HERE */}
+          <h1 className="lg:text-xl font-matcha-mint font-normal text-[#212922] mx-0.5">
             bilai.
           </h1>
         </div>
@@ -63,8 +63,7 @@ export default function Page() {
         </Link>
       </header>
 
-        
-        {/*<div className="flex divide-x border">
+      {/*<div className="flex divide-x border">
           <div className="px-6 py-4 text-center">
             <input
               value={currentCats}
@@ -85,7 +84,6 @@ export default function Page() {
           </div>
         </div>*/}
 
-
       <div className="max-w-md mx-auto flex flex-col gap-4">
         <div className="w-[90%] sm:w-full max-w-md p-6 md:p-12 shadow-2xl bg-gradient-to-b from-[#ffefc9] to-[#ffb882] rounded-xl my-10 mx-auto">
           <div className="p-3">
@@ -95,7 +93,9 @@ export default function Page() {
               </h2>
             </div>
             <div>
-              <h1 className="font-poppins font-bold text-xl text-[#080808] flex justify-center my-5">{username}</h1>
+              <h1 className="font-poppins font-bold text-xl text-[#080808] flex justify-center my-5">
+                {username}
+              </h1>
             </div>
             <p className=" font-bold text-xl text-[#0808080]">WhatsApp:</p>
             <div className="my-3 flex items-center">

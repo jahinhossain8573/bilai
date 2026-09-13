@@ -8,8 +8,9 @@ import { addCatToDB } from "@/app/actions/cats";
 import { clamp } from "lodash";
 import { useState } from "react";
 
-const spanStyling: string = "font-bold text-sm sm:text-base"; // Controls styling for the input titles
-const inputGroupStyling: string = "font-poppins font-bold mx-1 my-2 sm:my-3 flex flex-col gap-1 w-full"; // Controls styling for the stuff on the left
+const spanStyling: string = "font-bold text-sm sm:text-base "; // Controls styling for the input titles
+const inputGroupStyling: string =
+  "font-poppins font-bold mx-1 my-2 sm:my-3 flex flex-col gap-1 w-full"; // Controls styling for the stuff on the left
 
 export default function Page() {
   const router = useRouter();
@@ -85,18 +86,29 @@ export default function Page() {
         {/* Navbar */}
         <div className="md:flex md:grid-cols-1 md:items-center">
           <Image src="/Bilai.png" width={48} height={48} alt="" />
-        
+
           {/* ADD IN LOGO AND THE "BILAI" TEXT HERE */}
-          <h1 className="text-2xl font-matcha-mint text-[#212922] mx-0.5">bilai.</h1>
+          <h1 className="text-2xl font-matcha-mint text-[#212922] mx-0.5">
+            bilai.
+          </h1>
         </div>
-        <Link href="/" className=" text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5 mx-4">BACK</Link>
+        <Link
+          href="/"
+          className=" text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5 mx-4"
+        >
+          BACK
+        </Link>
       </header>
-        <div className="flex justify-center  w-[70%] xl:w-[40%] mx-auto p-5 md:p-12 shadow-lg bg-gradient-to-b from-[#fff2e9] to-[#fa7d1f] rounded-4xl my-5">
+        <div className="flex justify-center  w-[70%] xl:w-[40%] mx-auto p-5 md:p-12 shadow-lg bg-gradient-to-b from-[#ffffff] to-[#fdd299] rounded-4xl my-5">
         <div className="">
-         <div className=" text-center ">
-          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold">Cat for Adoption</h2>
-          <span className="text-xs sm:text-sm md:text-base text-gray-600">Help adopters know about your cat</span>
-        </div>
+          <div className=" text-center ">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold">
+              Cat for Adoption
+            </h2>
+            <span className="text-xs sm:text-sm md:text-base text-gray-600">
+              Help adopters know about your cat
+            </span>
+          </div>
           {/* Container for the stuff on the left */}
           <div className={inputGroupStyling}>
             <span className={spanStyling}>Name</span>
@@ -123,29 +135,31 @@ export default function Page() {
           <div className={inputGroupStyling}>
             <span className={spanStyling}>Age</span>
             <div className="flex justify-between items-start">
-              <p className="font-poppins font-bold my-1">Year :
-              <input
-                onChange={(e) => {
-                  changeYear(Number(e.target.value));
-                  // console.log(aboutCat);
-                }}
-                type="number"
-                value={year}
-                placeholder="YY"
-                className="bg-[#fffeee] border border-black w-12 rounded-md h-8 mx-1"
-              />
+              <p className="font-poppins font-bold my-1">
+                Year :
+                <input
+                  onChange={(e) => {
+                    changeYear(Number(e.target.value));
+                    // console.log(aboutCat);
+                  }}
+                  type="number"
+                  value={year}
+                  placeholder="YY"
+                  className="bg-[#fffeee] border border-black w-12 rounded-md h-8 mx-1"
+                />
               </p>
-              <p className="font-poppins font-bold my-1">Month :
-              <input
-                onChange={(e) => {
-                  changeMonth(clamp(Number(e.target.value), 0, 11));
-                  // console.log(aboutCat);
-                }}
-                value={month}
-                type="number"
-                placeholder="MM"
-                className="bg-[#fffeee] border border-black w-12 rounded-md h-8 mx-2"
-              />
+              <p className="font-poppins font-bold my-1">
+                Month :
+                <input
+                  onChange={(e) => {
+                    changeMonth(clamp(Number(e.target.value), 0, 11));
+                    // console.log(aboutCat);
+                  }}
+                  value={month}
+                  type="number"
+                  placeholder="MM"
+                  className="bg-[#fffeee] border border-black w-12 rounded-md h-8 mx-2"
+                />
               </p>
             </div>
           </div>
@@ -185,8 +199,8 @@ export default function Page() {
               <span className="mx-2">Female</span>
             </div>
           </div>
-          <div className="flex flex-col border rounded-2xl p-3 bg-[#fffeee] my-2 h-30 justify-center items-center hover:bg-[#fff88f]">
-            <span className="font-bold text-xl flex justify-center items-center">Photo</span>
+          <div className="flex flex-col border rounded-2xl p-3 bg-[#fffeee] my-2 h-30">
+            <span className={spanStyling}>Photo</span>
             <input
               type="file"
               name=""
@@ -202,26 +216,12 @@ export default function Page() {
               className=" w-50 rounded-md h-8 xl:w-full"
             />
             {imagePreview && (
-              <div className="relative w-full h-48 rounded-lg overflow-hidden border">
               <Image
                 src={String(imagePreview)}
                 alt=""
-                fill
-                className="object-contain"
-            
+                width={500}
+                height={500}
               ></Image>
-                    <button
-        type="button"
-        onClick={() => {
-          changeImage(null);
-          changeImagePreview(null);
-        }}
-        className="absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded-full bg-[#080808] hover:bg-[#b80c0c] text-white text-sm font-bold transition-colors"
-        aria-label="Remove photo"
-      >
-        ✕
-      </button>
-              </div>
             )}
           </div>
         </div>

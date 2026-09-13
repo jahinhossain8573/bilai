@@ -30,7 +30,9 @@ export default function Card({
         router.refresh();
       } catch (error) {
         window.alert(
-          error instanceof Error ? error.message : "Unable to delete this card.",
+          error instanceof Error
+            ? error.message
+            : "Unable to delete this card.",
         );
       }
     });
@@ -61,7 +63,6 @@ export default function Card({
           </span>
           <span>Parent: {catInput.parentName}</span>
         </div>
-        
 
         {/* Line 1 — Cat Name */}
         <ul className="flex gap-1.5 ">
@@ -74,24 +75,36 @@ export default function Card({
           </li>
           <li>
             <span>•</span>
-            <span>
-              {" "}
-              {Math.floor(catInput.ageMonths / 12)}{" "}
-              {Math.floor(catInput.ageMonths / 12) === 1 ? (
-                <span>year</span>
-              ) : (
-                <span>years</span>
-              )}
-            </span>
-            <span>
-              {" "}
-              {catInput.ageMonths % 12}{" "}
-              {catInput.ageMonths % 12 === 1 ? (
-                <span>month</span>
-              ) : (
-                <span>months</span>
-              )}
-            </span>
+            {catInput.ageMonths === 0 ? (
+              <span>Newborn</span>
+            ) : (
+              <>
+                <span>
+                  {" "}
+                  {Math.floor(catInput.ageMonths / 12) !== 0 && (
+                    <>
+                      {Math.floor(catInput.ageMonths / 12)}{" "}
+                      {Math.floor(catInput.ageMonths / 12) === 1 ? (
+                        <span>year</span>
+                      ) : (
+                        <span>years</span>
+                      )}
+                    </>
+                  )}
+                </span>
+                <span>
+                  {" "}
+                  {catInput.ageMonths % 12 !== 0 &&
+                    catInput.ageMonths % 12}{" "}
+                  {catInput.ageMonths % 12 !== 0 &&
+                    (catInput.ageMonths % 12 === 1 ? (
+                      <span>month</span>
+                    ) : (
+                      <span>months</span>
+                    ))}
+                </span>
+              </>
+            )}
           </li>
           <li>
             <span>•</span>

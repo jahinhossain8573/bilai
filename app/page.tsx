@@ -7,6 +7,7 @@ import { auth } from "@/auth";
 
 export default async function App() {
   const session = await auth();
+  const username = session?.user?.name;
 
   async function getData() {
     const data: CatRecord[] = await prisma.cat.findMany();
@@ -31,7 +32,7 @@ export default async function App() {
               href={"/login_form"}
               className="md:hidden text-[#212922] font-poppins font-extrabold hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
             >
-              <span >+ List Cat</span>
+              <span>+ List Cat</span>
             </Link>
             <Link
               href="/login_form"
@@ -56,7 +57,7 @@ export default async function App() {
               <span className="hidden lg:inline">+ List Cat</span>
               <span className="lg:hidden">+ List Cat</span>
             </Link>
-           </div>
+          </div>
         )}
 
         <div>
@@ -74,7 +75,7 @@ export default async function App() {
               className="text-[#212922] font-poppins font-extrabold flex items-center hover:text-[#080808] transition-colors duration-200 hover:bg-[#a1cf6b] rounded-2xl p-1.5"
             >
               <Image src="/profile.png" width={32} height={32} alt="" />
-              <span>Profile</span>
+              <span>{username}</span>
             </Link>
           )}
         </div>

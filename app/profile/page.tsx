@@ -100,7 +100,7 @@ export default function Page() {
               </h2>
             </div>
             <p className=" font-bold text-xl text-amber-50">WhatsApp:</p>
-            <div className="my-5">
+            <div className="my-5 flex items-center">
               <span className="font-bold">+88</span>
               <input
                 type="text"

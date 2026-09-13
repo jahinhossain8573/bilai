@@ -99,12 +99,10 @@ export default function Page() {
           BACK
         </Link>
       </header>
-      <div className="flex justify-center  w-[70%] xl:w-[40%] mx-auto p-5 shadow-lg bg-gradient-to-b from-[#ffffff] to-[#fdd299] rounded-4xl ">
+      <div className ="w-[95%] sm:w-full max-w-2xl mx-auto p-6 md:p-10 bg-gradient-to-b from-white to-[#ffb986] rounded-3xl shadow-lg">
         <div className="">
           <div className=" text-center ">
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold">
-              Cat for Adoption
-            </h2>
+  <h1 className="text-2xl md:text-3xl font-extrabold text-center">Cat for Adoption</h1>
             <span className="text-xs sm:text-sm md:text-base text-gray-600">
               Help adopters know about your cat
             </span>
@@ -114,7 +112,7 @@ export default function Page() {
             <span className={spanStyling}>Name</span>
             <input
               type="text"
-              className="bg-[#fffeee] border border-black w-50 rounded-md h-8 xl:w-full "
+              className="bg-[#fffeee] border border-black rounded-md h-8 w-full "
               onChange={(e) => {
                 changeName(e.target.value);
                 // console.log(name);
@@ -125,7 +123,7 @@ export default function Page() {
             <span className={spanStyling}>Breed</span>
             <input
               type="text"
-              className="bg-[#fffeee] border border-black w-50 rounded-md h-8 xl:w-full"
+              className="bg-[#fffeee] border border-black rounded-md h-8 w-full"
               onChange={(e) => {
                 changeBreed(e.target.value);
                 // console.log(breed);
@@ -167,7 +165,7 @@ export default function Page() {
             <span className={spanStyling}>Location</span>
             <input
               type="text"
-              className="bg-[#fffeee] border border-black  w-50 rounded-md h-8 xl:w-full"
+              className="bg-[#fffeee] border border-black rounded-md h-8 w-full"
               onChange={(e) => {
                 changeLocation(e.target.value);
                 // console.log(location);

@@ -91,11 +91,11 @@ export default function Page() {
         </div>*/}
       </div>
 
-      <div className="grid md:grid-cols-3 gap-4 mx-10">
+      <div className="max-w-md mx-auto flex flex-col gap-4">
         <div className="w-[90%] sm:w-full max-w-md p-6 md:p-12 shadow-2xl bg-[#FA7D1F] rounded-xl my-10 mx-auto">
           <div className="p-3">
             <div className=" justify-between items-center mb-3">
-              <h2 className="font-poppins font-bold text-3xl text-amber-50">
+              <h2 className="font-poppins font-bold text-3xl text-amber-50 flex justify-center">
                 Profile information
               </h2>
             </div>
@@ -106,7 +106,7 @@ export default function Page() {
                 type="text"
                 value={WhatsApp}
                 onChange={(e) => changeWhatsApp(e.target.value)}
-                className="border border-amber-50 mx-1"
+                className="border w-full h-10 border-amber-50 mx-1 rounded-xl"
               />
             </div>
           </div>

@@ -75,7 +75,7 @@ export default function Page() {
           <form onSubmit={handleSubmit}>
             <label
               htmlFor="name"
-              className="block text-base mb-2 my- font-poppins font-bold"
+              className="block text-base mb-2 my-2 font-poppins font-bold"
             >
               Name
             </label>
@@ -110,13 +110,13 @@ export default function Page() {
               WhatsApp:
             </label>
             <div className="flex items-center">
-              <span className="mr-1 text-2xl">+88</span>
+              <span className="mr-1 text-md">+88</span>
               <input
                 type="tel"
                 id="whatsapp"
                 value={whatsapp}
                 onChange={(e) => setWhatsapp(e.target.value)}
-                placeholder="01xxxxxxxxx"
+                placeholder="01XXXXXXXXX"
                 inputMode="numeric"
                 maxLength={11}
                 pattern="01[0-9]{9}"

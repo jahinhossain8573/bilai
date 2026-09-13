@@ -99,7 +99,7 @@ export default function Page() {
           BACK
         </Link>
       </header>
-      <div className="flex justify-center  w-[70%] xl:w-[40%] mx-auto p-5 md:p-12 shadow-lg bg-gradient-to-b from-[#ffffff] to-[#fdd299] rounded-4xl my-5">
+      <div className="flex justify-center  w-[70%] xl:w-[40%] mx-auto p-5 shadow-lg bg-gradient-to-b from-[#ffffff] to-[#fdd299] rounded-4xl ">
         <div className="">
           <div className=" text-center ">
             <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold">
@@ -197,8 +197,8 @@ export default function Page() {
                 <span className="mx-2">Female</span>
               </div>
             </div>
-            <div className="flex flex-col border rounded-2xl p-3 bg-[#fffeee] my-2 h-30">
-              <span className={spanStyling}>Photo</span>
+            <div className="flex flex-col justify-center border rounded-2xl p-3 bg-[#fffeee] hover:bg-[#fffcde] text-black hover:text-amber- my-2 h-30">
+              <span className="flex justify-center">Photo</span>
               <input
                 type="file"
                 name=""
@@ -213,13 +213,28 @@ export default function Page() {
                 }}
                 className=" w-50 rounded-md h-8 xl:w-full"
               />
+              
+             
               {imagePreview && (
-                <Image
-                  src={String(imagePreview)}
-                  alt=""
-                  width={500}
-                  height={500}
-                ></Image>
+    <div className="relative w-full h-56 mt-2 rounded-lg overflow-hidden border bg-gray-50">
+      <Image
+        src={String(imagePreview)}
+        alt=""
+        fill
+        className="object-contain"
+      />
+      <button
+        type="button"
+        onClick={() => {
+          changeImage(null);
+          changeImagePreview(null);
+        }}
+        className="absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded-full bg-[#080808] hover:bg-[#765c5c] text-white text-sm font-bold transition-colors"
+        aria-label="Remove photo"
+      >
+        ✕
+      </button>
+    </div>
               )}
             </div>
           </div>
